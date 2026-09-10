@@ -2075,6 +2075,520 @@ function acompanhar_pedido_novoServico() {
 }
 </script>
 
+    <section data-tela="painel-do-prestador" class="hidden">
+    <div class="p-5 pb-24 max-w-[430px] mx-auto animate-fade-in">
+        <!-- Cabeçalho da Tela -->
+        <div class="mb-6">
+            <p class="text-sm text-gray-500 font-body" id="painel_do_prestador_saudacao">Boa tarde, Carlos</p>
+            <h1 class="text-2xl font-display font-bold text-gray-900 mt-0.5">Painel do Prestador</h1>
+            <p class="text-sm text-gray-500 mt-1 font-body">Acompanhe seus pedidos e ganhos</p>
+        </div>
+
+        <!-- Cards de Indicadores -->
+        <div class="grid grid-cols-2 gap-3 mb-5">
+            <div class="card p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="w-9 h-9 rounded-lg bg-marca-100 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full font-body">+12%</span>
+                </div>
+                <p class="text-2xl font-display font-bold text-gray-900">R$ 3.840</p>
+                <p class="text-xs text-gray-500 font-body mt-0.5">Ganhos do mês</p>
+            </div>
+
+            <div class="card p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                    </div>
+                    <span class="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full font-body">3 novos</span>
+                </div>
+                <p class="text-2xl font-display font-bold text-gray-900" id="painel_pedidos_pendentes">7</p>
+                <p class="text-xs text-gray-500 font-body mt-0.5">Pedidos pendentes</p>
+            </div>
+
+            <div class="card p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="w-9 h-9 rounded-lg bg-yellow-100 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+                    </div>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full font-body">4.9</span>
+                </div>
+                <p class="text-2xl font-display font-bold text-gray-900">4.8</p>
+                <p class="text-xs text-gray-500 font-body mt-0.5">Avaliação média</p>
+            </div>
+
+            <div class="card p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="w-9 h-9 rounded-lg bg-sky-100 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-4.72C3.512 14.042 3 12.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    </div>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full font-body">Ótimo</span>
+                </div>
+                <p class="text-2xl font-display font-bold text-gray-900">94%</p>
+                <p class="text-xs text-gray-500 font-body mt-0.5">Taxa de resposta</p>
+            </div>
+        </div>
+
+        <!-- Gráfico SVG de Ganhos Semanais -->
+        <div class="card p-4 mb-5">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-display font-semibold text-gray-800">Ganhos da semana</h3>
+                <span class="text-xs text-gray-500 font-body">Últimos 7 dias</span>
+            </div>
+            <svg viewBox="0 0 320 120" class="w-full h-28" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#0d9488" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#0d9488" stop-opacity="0.02"/>
+                    </linearGradient>
+                </defs>
+                <!-- Grid lines -->
+                <line x1="30" y1="15" x2="310" y2="15" stroke="#f0f0f0" stroke-width="1"/>
+                <line x1="30" y1="45" x2="310" y2="45" stroke="#f0f0f0" stroke-width="1"/>
+                <line x1="30" y1="75" x2="310" y2="75" stroke="#f0f0f0" stroke-width="1"/>
+                <line x1="30" y1="105" x2="310" y2="105" stroke="#f0f0f0" stroke-width="1"/>
+                <!-- Bars -->
+                <rect x="38" y="30" width="22" height="75" rx="4" fill="url(#barGrad)" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="66" y="55" width="22" height="50" rx="4" fill="url(#barGrad)" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="94" y="20" width="22" height="85" rx="4" fill="url(#barGrad)" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="122" y="42" width="22" height="63" rx="4" fill="url(#barGrad)" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="150" y="15" width="22" height="90" rx="4" fill="url(#barGrad)" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="178" y="35" width="22" height="70" rx="4" fill="url(#barGrad)" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="206" y="25" width="22" height="80" rx="4" fill="#0d9488" opacity="0.9" rx="4"/>
+                <!-- X labels -->
+                <text x="49" y="118" text-anchor="middle" fill="#9ca3af" font-size="9" font-family="system-ui">Seg</text>
+                <text x="77" y="118" text-anchor="middle" fill="#9ca3af" font-size="9" font-family="system-ui">Ter</text>
+                <text x="105" y="118" text-anchor="middle" fill="#9ca3af" font-size="9" font-family="system-ui">Qua</text>
+                <text x="133" y="118" text-anchor="middle" fill="#9ca3af" font-size="9" font-family="system-ui">Qui</text>
+                <text x="161" y="118" text-anchor="middle" fill="#9ca3af" font-size="9" font-family="system-ui">Sex</text>
+                <text x="189" y="118" text-anchor="middle" fill="#9ca3af" font-size="9" font-family="system-ui">Sáb</text>
+                <text x="217" y="118" text-anchor="middle" fill="#6b7280" font-size="9" font-family="system-ui" font-weight="600">Dom</text>
+                <!-- Values -->
+                <text x="49" y="24" text-anchor="middle" fill="#6b7280" font-size="8" font-family="system-ui">R$420</text>
+                <text x="217" y="20" text-anchor="middle" fill="#0d9488" font-size="8" font-family="system-ui" font-weight="600">R$680</text>
+            </svg>
+            <div class="flex justify-between mt-1">
+                <span class="text-xs text-gray-500 font-body">Total: R$ 3.840</span>
+                <span class="text-xs text-green-600 font-body font-medium">+R$ 680 hoje</span>
+            </div>
+        </div>
+
+        <!-- Ações Rápidas -->
+        <div class="flex gap-2 mb-5">
+            <button onclick="mostrarTela('detalhe-do-prestador')" class="btn flex-1 flex items-center justify-center gap-2 py-3 px-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+                <span class="text-sm font-medium">Propostas</span>
+            </button>
+            <button onclick="mostrarTela('minha-conta-prestador')" class="btn flex-1 flex items-center justify-center gap-2 py-3 px-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.622 2.635l.615.93a4.5 4.5 0 01-1.038 6.058l-1.62 1.133a4.5 4.5 0 01-6.95-1.55l-.553-1.156a4.5 4.5 0 011.534-5.753l.762-.757a4.5 4.5 0 016.05 1.3zM12 12.75a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"/></svg>
+                <span class="text-sm font-medium">Enviar Proposta</span>
+            </button>
+        </div>
+
+        <!-- Filtros -->
+        <div class="flex gap-2 mb-4 overflow-x-auto pb-1 -mx-5 px-5">
+            <button onclick="painel_do_prestador_filtrar('todos')" class="painel-filtro-btn active flex-shrink-0 text-xs font-medium px-4 py-2 rounded-full transition-all" data-filtro="todos">Todos</button>
+            <button onclick="painel_do_prestador_filtrar('novo')" class="painel-filtro-btn flex-shrink-0 text-xs font-medium px-4 py-2 rounded-full transition-all" data-filtro="novo">Novos</button>
+            <button onclick="painel_do_prestador_filtrar('em_andamento')" class="painel-filtro-btn flex-shrink-0 text-xs font-medium px-4 py-2 rounded-full transition-all" data-filtro="em_andamento">Em andamento</button>
+            <button onclick="painel_do_prestador_filtrar('concluido')" class="painel-filtro-btn flex-shrink-0 text-xs font-medium px-4 py-2 rounded-full transition-all" data-filtro="concluido">Concluídos</button>
+        </div>
+
+        <!-- Lista de Pedidos -->
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="text-lg font-display font-bold text-gray-900">Pedidos Recebidos</h2>
+            <span class="text-xs text-gray-500 font-body" id="painel_contador_pedidos">8 pedidos</span>
+        </div>
+        <div class="space-y-3" id="painel_lista_pedidos">
+            <!-- Pedido 1 - Novo -->
+            <div class="card cursor-pointer transition-all hover:shadow-md active:scale-[0.98]" onclick="painel_do_prestador_abrirPedido('Mariana Costa', 'Instalação de ar-condicionado', 'R$ 350', 'novo', 'São Paulo, SP', '02/02/2026')">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-sm font-display">MC</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-sm font-display font-semibold text-gray-900 truncate">Mariana Costa</h4>
+                            <span class="badge bg-green-100 text-green-700 text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0">Novo</span>
+                        </div>
+                        <p class="text-xs text-gray-600 font-body truncate">Instalação de ar-condicionado split</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="text-sm font-display font-bold text-marca-700">R$ 350,00</span>
+                            <span class="text-[10px] text-gray-400 font-body">São Paulo, SP • 02/02</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
+                    <button onclick="event.stopPropagation(); painel_do_prestador_recusar('Mariana Costa')" class="flex-1 text-xs font-medium py-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition active:scale-95">Recusar</button>
+                    <button onclick="event.stopPropagation(); painel_do_prestador_aceitar('Mariana Costa')" class="flex-1 text-xs font-medium py-2 rounded-lg bg-marca-600 text-white hover:bg-marca-700 transition active:scale-95">Aceitar</button>
+                </div>
+            </div>
+
+            <!-- Pedido 2 - Novo -->
+            <div class="card cursor-pointer transition-all hover:shadow-md active:scale-[0.98]" onclick="painel_do_prestador_abrirPedido('Roberto Almeida', 'Montagem de móveis planejados', 'R$ 280', 'novo', 'Campinas, SP', '03/02/2026')">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-sm font-display">RA</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-sm font-display font-semibold text-gray-900 truncate">Roberto Almeida</h4>
+                            <span class="badge bg-green-100 text-green-700 text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0">Novo</span>
+                        </div>
+                        <p class="text-xs text-gray-600 font-body truncate">Montagem de móveis planejados</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="text-sm font-display font-bold text-marca-700">R$ 280,00</span>
+                            <span class="text-[10px] text-gray-400 font-body">Campinas, SP • 03/02</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
+                    <button onclick="event.stopPropagation(); painel_do_prestador_recusar('Roberto Almeida')" class="flex-1 text-xs font-medium py-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition active:scale-95">Recusar</button>
+                    <button onclick="event.stopPropagation(); painel_do_prestador_aceitar('Roberto Almeida')" class="flex-1 text-xs font-medium py-2 rounded-lg bg-marca-600 text-white hover:bg-marca-700 transition active:scale-95">Aceitar</button>
+                </div>
+            </div>
+
+            <!-- Pedido 3 - Novo -->
+            <div class="card cursor-pointer transition-all hover:shadow-md active:scale-[0.98]" onclick="painel_do_prestador_abrirPedido('Fernanda Lima', 'Limpeza residencial profunda', 'R$ 200', 'novo', 'Osasco, SP', '04/02/2026')">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-sm font-display">FL</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-sm font-display font-semibold text-gray-900 truncate">Fernanda Lima</h4>
+                            <span class="badge bg-green-100 text-green-700 text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0">Novo</span>
+                        </div>
+                        <p class="text-xs text-gray-600 font-body truncate">Limpeza residencial profunda (3 quartos)</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="text-sm font-display font-bold text-marca-700">R$ 200,00</span>
+                            <span class="text-[10px] text-gray-400 font-body">Osasco, SP • 04/02</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
+                    <button onclick="event.stopPropagation(); painel_do_prestador_recusar('Fernanda Lima')" class="flex-1 text-xs font-medium py-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition active:scale-95">Recusar</button>
+                    <button onclick="event.stopPropagation(); painel_do_prestador_aceitar('Fernanda Lima')" class="flex-1 text-xs font-medium py-2 rounded-lg bg-marca-600 text-white hover:bg-marca-700 transition active:scale-95">Aceitar</button>
+                </div>
+            </div>
+
+            <!-- Pedido 4 - Em Andamento -->
+            <div class="card cursor-pointer transition-all hover:shadow-md active:scale-[0.98]" onclick="painel_do_prestador_abrirPedido('Paulo Henrique', 'Reforma elétrica residencial', 'R$ 1.200', 'em_andamento', 'Santos, SP', '28/01/2026')">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-sm font-display">PH</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-sm font-display font-semibold text-gray-900 truncate">Paulo Henrique</h4>
+                            <span class="badge bg-amber-100 text-amber-700 text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0">Em andamento</span>
+                        </div>
+                        <p class="text-xs text-gray-600 font-body truncate">Reforma elétrica residencial</p>
+                        <div class="w-full bg-gray-100 rounded-full h-1.5 mt-2">
+                            <div class="bg-amber-400 h-1.5 rounded-full" style="width: 65%"></div>
+                        </div>
+                        <div class="flex items-center justify-between mt-1.5">
+                            <span class="text-xs text-gray-500 font-body">65% concluído</span>
+                            <span class="text-sm font-display font-bold text-marca-700">R$ 1.200</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
+                    <button onclick="event.stopPropagation(); painel_do_prestador_abrirChat('Paulo Henrique')" class="flex-1 text-xs font-medium py-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition active:scale-95 flex items-center justify-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015 21.135 5.97 5.97 0 013 15.75c0-1.243.306-2.426.858-3.506A8.962 8.962 0 013 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+                        Chat
+                    </button>
+                    <button onclick="event.stopPropagation(); painel_do_prestador_confirmarEntrega('Paulo Henrique')" class="flex-1 text-xs font-medium py-2 rounded-lg bg-marca-600 text-white hover:bg-marca-700 transition active:scale-95">Confirmar Entrega</button>
+                </div>
+            </div>
+
+            <!-- Pedido 5 - Em Andamento -->
+            <div class="card cursor-pointer transition-all hover:shadow-md active:scale-[0.98]" onclick="painel_do_prestador_abrirPedido('Juliana Reis', 'Aulas de violão particulares', 'R$ 560', 'em_andamento', 'Guarulhos, SP', '25/01/2026')">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-sm font-display">JR</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-sm font-display font-semibold text-gray-900 truncate">Juliana Reis</h4>
+                            <span class="badge bg-amber-100 text-amber-700 text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0">Em andamento</span>
+                        </div>
+                        <p class="text-xs text-gray-600 font-body truncate">Aulas de violão particulares — 8 aulas</p>
+                        <div class="w-full bg-gray-100 rounded-full h-1.5 mt-2">
+                            <div class="bg-amber-400 h-1.5 rounded-full" style="width: 30%"></div>
+                        </div>
+                        <div class="flex items-center justify-between mt-1.5">
+                            <span class="text-xs text-gray-500 font-body">Aula 3/8</span>
+                            <span class="text-sm font-display font-bold text-marca-700">R$ 560</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
+                    <button onclick="event.stopPropagation(); painel_do_prestador_abrirChat('Juliana Reis')" class="flex-1 text-xs font-medium py-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition active:scale-95 flex items-center justify-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015 21.135 5.97 5.97 0 013 15.75c0-1.243.306-2.426.858-3.506A8.962 8.962 0 013 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+                        Chat
+                    </button>
+                    <button onclick="event.stopPropagation(); painel_do_prestador_enviarProposta('Juliana Reis')" class="flex-1 text-xs font-medium py-2 rounded-lg bg-marca-600 text-white hover:bg-marca-700 transition active:scale-95">Enviar Atualização</button>
+                </div>
+            </div>
+
+            <!-- Pedido 6 - Concluído -->
+            <div class="card cursor-pointer transition-all hover:shadow-md active:scale-[0.98]" onclick="painel_do_prestador_abrirPedido('Ana Beatriz Souza', 'Design de logotipo', 'R$ 450', 'concluido', 'São Bernardo, SP', '18/01/2026')">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-sm font-display">AB</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-sm font-display font-semibold text-gray-900 truncate">Ana Beatriz Souza</h4>
+                            <span class="badge bg-sky-100 text-sky-700 text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0">Concluído</span>
+                        </div>
+                        <p class="text-xs text-gray-600 font-body truncate">Design de logotipo para cafeteria</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-0.5">
+                                <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <span class="text-xs font-medium text-gray-700 font-body">5.0</span>
+                            </div>
+                            <span class="text-sm font-display font-bold text-green-600">R$ 450,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedido 7 - Concluído -->
+            <div class="card cursor-pointer transition-all hover:shadow-md active:scale-[0.98]" onclick="painel_do_prestador_abrirPedido('Carlos Eduardo', 'Manutenção de computador', 'R$ 180', 'concluido', 'São Paulo, SP', '12/01/2026')">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-sm font-display">CE</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-sm font-display font-semibold text-gray-900 truncate">Carlos Eduardo</h4>
+                            <span class="badge bg-sky-100 text-sky-700 text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0">Concluído</span>
+                        </div>
+                        <p class="text-xs text-gray-600 font-body truncate">Manutenção e formatação de notebook</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-0.5">
+                                <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <span class="text-xs font-medium text-gray-700 font-body">4.8</span>
+                            </div>
+                            <span class="text-sm font-display font-bold text-green-600">R$ 180,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedido 8 - Concluído -->
+            <div class="card cursor-pointer transition-all hover:shadow-md active:scale-[0.98]" onclick="painel_do_prestador_abrirPedido('Luciana Oliveira', 'Jardinagem e paisagismo', 'R$ 600', 'concluido', 'Jundiaí, SP', '05/01/2026')">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-sm font-display">LO</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-sm font-display font-semibold text-gray-900 truncate">Luciana Oliveira</h4>
+                            <span class="badge bg-sky-100 text-sky-700 text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0">Concluído</span>
+                        </div>
+                        <p class="text-xs text-gray-600 font-body truncate">Jardinagem e paisagismo — jardim 80m²</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-0.5">
+                                <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <span class="text-xs font-medium text-gray-700 font-body">5.0</span>
+                            </div>
+                            <span class="text-sm font-display font-bold text-green-600">R$ 600,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estado vazio (inicialmente oculto) -->
+        <div class="hidden text-center py-10" id="painel_estado_vazio">
+            <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-3">
+                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h.75m3 0h3.75m-3.75 0h3.75m-9.75 3.75h.008v.008H6v-.008z"/></svg>
+            </div>
+            <p class="text-sm font-display font-semibold text-gray-700">Nenhum pedido encontrado</p>
+            <p class="text-xs text-gray-500 font-body mt-1">Os pedidos aparecerão aqui quando clientes solicitarem seus serviços.</p>
+        </div>
+    </div>
+
+    <!-- Menu Inferior -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 z-50">
+        <div class="max-w-[430px] mx-auto flex items-center justify-around py-2 px-2">
+            <button onclick="mostrarTela('catalogo-de-servicos')" class="flex flex-col items-center gap-0.5 p-2 text-gray-400 hover:text-gray-600 transition" title="Catálogo">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+                <span class="text-[10px] font-body">Catálogo</span>
+            </button>
+            <button onclick="mostrarTela('pedido-confirmado')" class="flex flex-col items-center gap-0.5 p-2 text-gray-400 hover:text-gray-600 transition" title="Pedidos">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h.75m3 0h3.75m-3.75 0h3.75m-9.75 3.75h.008v.008H6v-.008z"/></svg>
+                <span class="text-[10px] font-body">Pedidos</span>
+            </button>
+            <button onclick="mostrarTela('acompanhar-pedido')" class="flex flex-col items-center gap-0.5 p-2 text-gray-400 hover:text-gray-600 transition" title="Acompanhar">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                <span class="text-[10px] font-body">Acompanhar</span>
+            </button>
+            <button onclick="mostrarTela('painel-do-prestador')" class="flex flex-col items-center gap-0.5 p-2 text-marca-600 font-medium" title="Painel">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+                <span class="text-[10px] font-body font-medium">Painel</span>
+            </button>
+            <button onclick="mostrarTela('minha-conta-prestador')" class="flex flex-col items-center gap-0.5 p-2 text-gray-400 hover:text-gray-600 transition" title="Conta">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.25h15a1.125 1.125 0 001.125-1.125V18a5.25 5.25 0 00-10.5 0v1.125a1.125 1.125 0 001.125 1.125z"/></svg>
+                <span class="text-[10px] font-body">Conta</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Modal de Detalhe do Pedido -->
+    <div id="painel_modal_pedido" class="hidden fixed inset-0 z-[60]">
+        <div class="absolute inset-0 bg-black/50" onclick="painel_do_prestador_fecharModal()"></div>
+        <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl max-h-[85vh] overflow-y-auto max-w-[430px] mx-auto">
+            <div class="sticky top-0 bg-white p-4 border-b border-gray-100 flex items-center justify-between">
+                <h3 class="text-base font-display font-bold text-gray-900">Detalhe do Pedido</h3>
+                <button onclick="painel_do_prestador_fecharModal()" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 transition active:scale-90">
+                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-5" id="painel_modal_pedido_conteudo"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+function painel_do_prestador_filtrar(filtro) {
+    document.querySelectorAll('.painel-filtro-btn').forEach(b => {
+        b.classList.remove('bg-marca-600', 'text-white');
+        b.classList.add('bg-gray-100', 'text-gray-600');
+    });
+    const btn = document.querySelector(`.painel-filtro-btn[data-filtro="${filtro}"]`);
+    if (btn) {
+        btn.classList.remove('bg-gray-100', 'text-gray-600');
+        btn.classList.add('bg-marca-600', 'text-white');
+    }
+
+    const pedidos = document.querySelectorAll('#painel_lista_pedidos > div');
+    let visiveis = 0;
+    pedidos.forEach(p => {
+        const badges = p.querySelectorAll('.badge');
+        let match = false;
+        badges.forEach(b => {
+            const text = b.textContent.trim().toLowerCase();
+            if (filtro === 'todos') match = true;
+            else if (filtro === 'novo' && text === 'novo') match = true;
+            else if (filtro === 'em_andamento' && text === 'em andamento') match = true;
+            else if (filtro === 'concluido' && text === 'concluído') match = true;
+        });
+        p.style.display = match ? '' : 'none';
+        if (match) visiveis++;
+    });
+
+    document.getElementById('painel_contador_pedidos').textContent = `${visiveis} pedido${visiveis !== 1 ? 's' : ''}`;
+    document.getElementById('painel_estado_vazio').classList.toggle('hidden', visiveis > 0);
+}
+
+function painel_do_prestador_abrirPedido(nome, servico, valor, status, cidade, data) {
+    const statusMap = {
+        'novo': { label: 'Novo', class: 'bg-green-100 text-green-700' },
+        'em_andamento': { label: 'Em andamento', class: 'bg-amber-100 text-amber-700' },
+        'concluido': { label: 'Concluído', class: 'bg-sky-100 text-sky-700' }
+    };
+    const s = statusMap[status] || statusMap['novo'];
+
+    const html = `
+        <div class="space-y-4">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-marca-400 to-marca-600 flex items-center justify-center">
+                    <span class="text-white font-bold font-display">${nome.split(' ').map(w => w[0]).join('').slice(0,2)}</span>
+                </div>
+                <div>
+                    <p class="font-display font-bold text-gray-900">${nome}</p>
+                    <p class="text-xs text-gray-500 font-body">Cliente</p>
+                </div>
+                <span class="badge ${s.class} text-[10px] font-medium px-2.5 py-1 rounded-full ml-auto">${s.label}</span>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 space-y-2.5">
+                <div class="flex justify-between"><span class="text-xs text-gray-500 font-body">Serviço</span><span class="text-sm font-medium text-gray-900 font-body">${servico}</span></div>
+                <div class="flex justify-between"><span class="text-xs text-gray-500 font-body">Valor</span><span class="text-sm font-bold text-marca-700 font-display">${valor}</span></div>
+                <div class="flex justify-between"><span class="text-xs text-gray-500 font-body">Local</span><span class="text-sm text-gray-900 font-body">${cidade}</span></div>
+                <div class="flex justify-between"><span class="text-xs text-gray-500 font-body">Data solicitada</span><span class="text-sm text-gray-900 font-body">${data}</span></div>
+            </div>
+            ${status === 'em_andamento' ? `
+            <div>
+                <p class="text-xs text-gray-500 font-body mb-1">Progresso</p>
+                <div class="w-full bg-gray-100 rounded-full h-2">
+                    <div class="bg-amber-400 h-2 rounded-full transition-all" style="width: 65%"></div>
+                </div>
+                <p class="text-xs text-gray-500 mt-1 font-body">65% concluído</p>
+            </div>` : ''}
+            <div class="flex gap-2 pt-2">
+                ${status === 'novo' ? `
+                    <button onclick="painel_do_prestador_recusar('${nome}'); painel_do_prestador_fecharModal();" class="flex-1 text-xs font-medium py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition active:scale-95">Recusar</button>
+                    <button onclick="painel_do_prestador_aceitar('${nome}'); painel_do_prestador_fecharModal();" class="flex-1 text-xs font-medium py-2.5 rounded-lg bg-marca-600 text-white hover:bg-marca-700 transition active:scale-95">Aceitar</button>
+                ` : status === 'em_andamento' ? `
+                    <button onclick="painel_do_prestador_abrirChat('${nome}'); painel_do_prestador_fecharModal();" class="flex-1 text-xs font-medium py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition active:scale-95">Chat</button>
+                    <button onclick="painel_do_prestador_confirmarEntrega('${nome}'); painel_do_prestador_fecharModal();" class="flex-1 text-xs font-medium py-2.5 rounded-lg bg-marca-600 text-white hover:bg-marca-700 transition active:scale-95">Confirmar Entrega</button>
+                ` : `
+                    <button onclick="mostrarTela('pagamento-e-creditos'); painel_do_prestador_fecharModal();" class="w-full text-xs font-medium py-2.5 rounded-lg bg-marca-600 text-white hover:bg-marca-700 transition active:scale-95">Ver Pagamento</button>
+                `}
+            </div>
+        </div>
+    `;
+    abrirModal(html, 'Detalhe do Pedido');
+}
+
+function painel_do_prestador_aceitar(nome) {
+    toast(`Pedido de ${nome} aceito com sucesso!`, 'ok');
+    const pendentes = document.getElementById('painel_pedidos_pendentes');
+    if (pendentes) {
+        let val = parseInt(pendentes.textContent) - 1;
+        pendentes.textContent = Math.max(0, val);
+    }
+}
+
+function painel_do_prestador_recusar(nome) {
+    toast(`Pedido de ${nome} recusado.`, 'info');
+    const pendentes = document.getElementById('painel_pedidos_pendentes');
+    if (pendentes) {
+        let val = parseInt(pendentes.textContent) - 1;
+        pendentes.textContent = Math.max(0, val);
+    }
+}
+
+function painel_do_prestador_confirmarEntrega(nome) {
+    const html = `
+        <div class="text-center py-4">
+            <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
+                <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <p class="text-sm font-display font-semibold text-gray-900">Confirmar entrega?</p>
+            <p class="text-xs text-gray-500 font-body mt-1">O pagamento de <strong>R$ 1.200</strong> será liberado para você.</p>
+            <div class="flex gap-2 mt-4">
+                <button onclick="fecharModal()" class="flex-1 text-xs font-medium py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition active:scale-95">Cancelar</button>
+                <button onclick="painel_do_prestador_confirmarEntregaOk('${nome}')" class="flex-1 text-xs font-medium py-2.5 rounded-lg bg-green-600 text-white hover:bg-green-700 transition active:scale-95">Confirmar</button>
+            </div>
+        </div>
+    `;
+    abrirModal(html, 'Confirmar Entrega');
+}
+
+function painel_do_prestador_confirmarEntregaOk(nome) {
+    fecharModal();
+    toast(`Entrega confirmada! Pagamento de R$ 1.200 liberado.`, 'ok');
+}
+
+function painel_do_prestador_enviarProposta(nome) {
+    toast(`Proposta enviada para ${nome}.`, 'ok');
+}
+
+function painel_do_prestador_abrirChat(nome) {
+    toast(`Abrindo chat com ${nome}...`, 'info');
+}
+
+function painel_do_prestador_fecharModal() {
+    fecharModal();
+}
+</script>
+
     <!-- TELAS -->
 
     </main>
