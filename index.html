@@ -409,6 +409,496 @@ window._catalogoInit=catalogo_de_servicos_init;
 })();
 </script>
 
+    <section data-tela="detalhe-do-prestador" class="hidden">
+  <div class="bg-white min-h-screen flex flex-col">
+    <!-- Cover + Profile Header -->
+    <div class="relative">
+      <div class="h-44 bg-gradient-to-br from-marca-600 via-marca-700 to-marca-800 relative overflow-hidden">
+        <svg class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 400 180" fill="none">
+          <circle cx="340" cy="30" r="80" fill="white"/>
+          <circle cx="50" cy="150" r="60" fill="white"/>
+          <circle cx="380" cy="160" r="40" fill="white"/>
+        </svg>
+        <!-- Back button -->
+        <button onclick="mostrarTela('catalogo-de-servicos')" class="absolute top-3 left-3 w-9 h-9 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center active:scale-90 transition-transform">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+        </button>
+        <!-- Share button -->
+        <button class="absolute top-3 right-3 w-9 h-9 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center active:scale-90 transition-transform">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100-2.186m0 2.186v.375c0 .621.504 1.125 1.125 1.125h1.5c.621 0 1.125-.504 1.125-1.125v-.375m-3 3.75h1.5m-1.5 0h1.5m0 0v.375c0 .621-.504 1.125-1.125 1.125h-1.5c-.621 0-1.125-.504-1.125-1.125v-.375m9-6.75v.375c0 .621.504 1.125 1.125 1.125h1.5c.621 0 1.125-.504 1.125-1.125v-.375m-3 3.75h1.5m-1.5 0h1.5m0 0v.375c0 .621-.504 1.125-1.125 1.125h-1.5c-.621 0-1.125-.504-1.125-1.125v-.375"/></svg>
+        </button>
+      </div>
+      <!-- Avatar overlapping -->
+      <div class="absolute -bottom-12 left-4">
+        <div class="w-24 h-24 rounded-full bg-gradient-to-br from-marca-400 to-marca-600 flex items-center justify-center border-4 border-white shadow-lg">
+          <span class="text-white text-3xl font-display font-bold">RC</span>
+        </div>
+      </div>
+      <!-- Verified badge -->
+      <div class="absolute -bottom-12 right-4 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border-3 border-white shadow">
+        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+      </div>
+    </div>
+
+    <!-- Profile Info -->
+    <div class="pt-14 pb-2 px-4">
+      <div class="flex items-start justify-between">
+        <div>
+          <h1 class="font-display font-bold text-xl text-gray-900 leading-tight">Rafael Costa</h1>
+          <p class="text-sm text-marca-700 font-medium mt-0.5">Eletricista Residencial</p>
+        </div>
+        <div class="flex items-center gap-1 bg-amber-50 px-2.5 py-1 rounded-full">
+          <svg class="w-4 h-4 text-amber-500 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <span class="text-sm font-bold text-amber-700">4.9</span>
+          <span class="text-xs text-gray-500">(127)</span>
+        </div>
+      </div>
+
+      <!-- Quick stats -->
+      <div class="flex gap-3 mt-3">
+        <div class="flex items-center gap-1.5 text-sm text-gray-600">
+          <svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="font-semibold">312</span> serviços realizados
+        </div>
+        <div class="flex items-center gap-1.5 text-sm text-gray-600">
+          <svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          <span>São Paulo, SP</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-sm text-gray-600">
+          <svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Responde em ~1h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action buttons row -->
+    <div class="flex gap-2 px-4 mt-3 mb-4">
+      <button onclick="abrirWhatsApp()" class="flex-1 flex items-center justify-center gap-2 py-2.5 bg-green-50 text-green-700 rounded-xl font-medium text-sm active:scale-95 transition-all hover:bg-green-100">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </button>
+      <button class="flex-1 flex items-center justify-center gap-2 py-2.5 bg-marca-50 text-marca-700 rounded-xl font-medium text-sm active:scale-95 transition-all hover:bg-marca-100">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        Enviar Mensagem
+      </button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="px-4 mt-1">
+      <div class="flex bg-gray-100 rounded-xl p-1">
+        <button onclick="detalhe_do_prestador_aba('sobre')" id="tab-sobre" class="flex-1 py-2 text-sm font-semibold rounded-lg bg-white text-marca-700 shadow-sm transition-all">Sobre</button>
+        <button onclick="detalhe_do_prestador_aba('servicos')" id="tab-servicos" class="flex-1 py-2 text-sm font-semibold rounded-lg text-gray-500 transition-all">Serviços</button>
+        <button onclick="detalhe_do_prestador_aba('avaliacoes')" id="tab-avaliacoes" class="flex-1 py-2 text-sm font-semibold rounded-lg text-gray-500 transition-all">Avaliações</button>
+      </div>
+    </div>
+
+    <!-- Tab content -->
+    <div class="flex-1 overflow-y-auto pb-28 mt-3">
+
+      <!-- ABA: Sobre -->
+      <div id="conteudo-sobre" class="px-4">
+        <!-- Badges -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="badge badge-success">✓ Verificado</span>
+          <span class="badge badge-info">⚡ Responde rápido</span>
+          <span class="badge badge-warning">🏆 Top prestador</span>
+        </div>
+
+        <!-- Bio -->
+        <div class="card mb-3">
+          <h3 class="font-display font-semibold text-gray-900 mb-2">Sobre mim</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Eletricista com mais de 10 anos de experiência em instalações residenciais e comerciais. Especializado em reformas elétricas, instalação de tomadas, interruptores, disjuntores e luminárias. Trabalho com materiais de qualidade e garantia de 6 meses em todos os serviços realizados.</p>
+        </div>
+
+        <!-- Details grid -->
+        <div class="card mb-3">
+          <h3 class="font-display font-semibold text-gray-900 mb-3">Informações</h3>
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 bg-marca-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-marca-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+              </div>
+              <div><span class="text-gray-500">Região de atendimento:</span> <span class="text-gray-900 font-medium">Zona Sul, Zona Oeste e Centro — SP</span></div>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 bg-marca-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-marca-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div><span class="text-gray-500">Disponibilidade:</span> <span class="text-gray-900 font-medium">Seg a Sex, 08h–18h</span></div>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 bg-marca-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-marca-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+              </div>
+              <div><span class="text-gray-500">Experiência:</span> <span class="text-gray-900 font-medium">10 anos</span></div>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 bg-marca-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-marca-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div><span class="text-gray-500">Garantia:</span> <span class="text-gray-900 font-medium">6 meses em todos os serviços</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Gallery -->
+        <div class="card mb-3">
+          <h3 class="font-display font-semibold text-gray-900 mb-3">Trabalhos realizados</h3>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="aspect-square rounded-xl bg-gradient-to-br from-yellow-100 to-amber-200 flex items-center justify-center active:scale-95 transition-transform cursor-pointer" onclick="detalhe_do_prestador_galeria(0)">
+              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+            </div>
+            <div class="aspect-square rounded-xl bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center active:scale-95 transition-transform cursor-pointer" onclick="detalhe_do_prestador_galeria(1)">
+              <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+            </div>
+            <div class="aspect-square rounded-xl bg-gradient-to-br from-emerald-100 to-teal-200 flex items-center justify-center active:scale-95 transition-transform cursor-pointer" onclick="detalhe_do_prestador_galeria(2)">
+              <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+            </div>
+            <div class="aspect-square rounded-xl bg-gradient-to-br from-orange-100 to-red-200 flex items-center justify-center active:scale-95 transition-transform cursor-pointer" onclick="detalhe_do_prestador_galeria(3)">
+              <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+            </div>
+            <div class="aspect-square rounded-xl bg-gradient-to-br from-purple-100 to-violet-200 flex items-center justify-center active:scale-95 transition-transform cursor-pointer" onclick="detalhe_do_prestador_galeria(4)">
+              <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+            </div>
+            <div class="aspect-square rounded-xl bg-gradient-to-br from-cyan-100 to-sky-200 flex items-center justify-center active:scale-95 transition-transform cursor-pointer" onclick="detalhe_do_prestador_galeria(5)">
+              <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documents -->
+        <div class="card mb-3">
+          <h3 class="font-display font-semibold text-gray-900 mb-3">Documentos verificados</h3>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 p-2.5 bg-green-50 rounded-xl">
+              <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">RG</p>
+                <p class="text-xs text-gray-500">Documento verificado</p>
+              </div>
+              <span class="text-xs text-green-600 font-medium">Aprovado</span>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 bg-green-50 rounded-xl">
+              <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">CPF</p>
+                <p class="text-xs text-gray-500">Documento verificado</p>
+              </div>
+              <span class="text-xs text-green-600 font-medium">Aprovado</span>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 bg-green-50 rounded-xl">
+              <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">Comprovante de residência</p>
+                <p class="text-xs text-gray-500">Atualizado em jan/2025</p>
+              </div>
+              <span class="text-xs text-green-600 font-medium">Aprovado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA: Serviços -->
+      <div id="conteudo-servicos" class="px-4 hidden">
+        <div id="lista-servicos"></div>
+        <div id="vazio-servicos" class="hidden text-center py-10">
+          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
+          </div>
+          <p class="text-sm text-gray-500">Nenhum serviço encontrado</p>
+        </div>
+      </div>
+
+      <!-- ABA: Avaliações -->
+      <div id="conteudo-avaliacoes" class="px-4 hidden">
+        <!-- Rating summary -->
+        <div class="card mb-3">
+          <div class="flex items-center gap-4">
+            <div class="text-center">
+              <div class="text-4xl font-display font-bold text-gray-900">4.9</div>
+              <div class="flex gap-0.5 mt-1">
+                <svg class="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">127 avaliações</p>
+            </div>
+            <!-- Mini bar chart -->
+            <div class="flex-1 space-y-1.5">
+              <div class="flex items-center gap-2"><span class="text-xs text-gray-500 w-3">5</span><div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:78%"></div></div><span class="text-xs text-gray-400 w-8 text-right">78%</span></div>
+              <div class="flex items-center gap-2"><span class="text-xs text-gray-500 w-3">4</span><div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:15%"></div></div><span class="text-xs text-gray-400 w-8 text-right">15%</span></div>
+              <div class="flex items-center gap-2"><span class="text-xs text-gray-500 w-3">3</span><div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:5%"></div></div><span class="text-xs text-gray-400 w-8 text-right">5%</span></div>
+              <div class="flex items-center gap-2"><span class="text-xs text-gray-500 w-3">2</span><div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:1%"></div></div><span class="text-xs text-gray-400 w-8 text-right">1%</span></div>
+              <div class="flex items-center gap-2"><span class="text-xs text-gray-500 w-3">1</span><div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:1%"></div></div><span class="text-xs text-gray-400 w-8 text-right">1%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews list -->
+        <div id="lista-avaliacoes" class="space-y-3"></div>
+      </div>
+    </div>
+
+    <!-- Fixed CTA Footer -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-3 z-50">
+      <div class="max-w-[430px] mx-auto">
+        <button onclick="detalhe_do_prestador_solicitar()" class="w-full py-3.5 bg-marca-600 text-white rounded-xl font-display font-bold text-base active:scale-95 transition-all shadow-lg shadow-marca-600/20 hover:bg-marca-700 flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Solicitar Serviço
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Solicitar Serviço -->
+  <div id="modal-solicitar" class="hidden fixed inset-0 z-[200]">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="fecharModal()"></div>
+    <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl max-h-[90vh] overflow-y-auto animate-slide-up">
+      <div class="sticky top-0 bg-white z-10 px-5 pt-4 pb-3 border-b border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="font-display font-bold text-lg text-gray-900">Solicitar Serviço</h2>
+            <p class="text-xs text-gray-500">Preencha os dados abaixo</p>
+          </div>
+          <button onclick="fecharModal()" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center active:scale-90 transition-transform">
+            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <!-- Prestador mini info -->
+        <div class="flex items-center gap-3 mt-3 p-3 bg-gray-50 rounded-xl">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-marca-400 to-marca-600 flex items-center justify-center flex-shrink-0">
+            <span class="text-white text-sm font-bold">RC</span>
+          </div>
+          <div class="min-w-0">
+            <p class="text-sm font-semibold text-gray-900 truncate">Rafael Costa</p>
+            <p class="text-xs text-gray-500">Eletricista Residencial · 4.9 ★</p>
+          </div>
+        </div>
+      </div>
+      <div class="px-5 py-4 space-y-4">
+        <!-- Service type -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Tipo de Serviço</label>
+          <select id="sol-tipo" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:ring-2 focus:ring-marca-500 focus:border-marca-500 outline-none transition-all">
+            <option value="">Selecione o serviço...</option>
+            <option>Instalação Elétrica Residencial</option>
+            <option>Troca de Disjuntores</option>
+            <option>Instalação de Tomadas e Interruptores</option>
+            <option>Manutenção Elétrica</option>
+            <option>Instalação de Luminárias</option>
+            <option>Fiação e Cabos</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <!-- Address -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Endereço do Serviço</label>
+          <input id="sol-endereco" type="text" placeholder="Rua, número, bairro..." class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-marca-500 focus:border-marca-500 outline-none transition-all">
+        </div>
+        <!-- Date -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Data Preferida</label>
+          <input id="sol-data" type="date" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:ring-2 focus:ring-marca-500 focus:border-marca-500 outline-none transition-all">
+        </div>
+        <!-- Description -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Descreva o que precisa</label>
+          <textarea id="sol-descricao" rows="3" placeholder="Ex: Preciso trocar 5 tomadas na sala e instalar um disjuntor novo..." class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-marca-500 focus:border-marca-500 outline-none transition-all resize-none"></textarea>
+        </div>
+        <!-- Photos -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Fotos do local <span class="text-gray-400 font-normal">(opcional)</span></label>
+          <div class="flex gap-2">
+            <button onclick="detalhe_do_prestador_adicionarFoto(this)" class="w-20 h-20 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center gap-1 text-gray-400 hover:border-marca-400 hover:text-marca-500 active:scale-95 transition-all">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              <span class="text-[10px]">Adicionar</span>
+            </button>
+            <div class="w-20 h-20 bg-gradient-to-br from-yellow-100 to-amber-200 rounded-xl flex items-center justify-center">
+              <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m7.5-7.5l-6.364-6.364a2.25 2.25 0 00-3.182 0L3.75 10.5"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Budget hint -->
+        <div class="bg-marca-50 rounded-xl p-3 flex items-start gap-2.5">
+          <svg class="w-5 h-5 text-marca-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/></svg>
+          <p class="text-xs text-marca-700">O prestador irá enviar um orçamento personalizado. Você pode aceitar ou negociar o valor antes do início do serviço.</p>
+        </div>
+        <!-- Submit -->
+        <button onclick="detalhe_do_prestador_enviarPedido()" class="w-full py-3.5 bg-marca-600 text-white rounded-xl font-display font-bold text-base active:scale-95 transition-all shadow-lg shadow-marca-600/20 hover:bg-marca-700">
+          Enviar Solicitação
+        </button>
+        <button onclick="fecharModal()" class="w-full py-3 text-gray-500 font-medium text-sm hover:text-gray-700 transition-colors">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Galeria -->
+  <div id="modal-galeria" class="hidden fixed inset-0 z-[200]">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="fecharModal()"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-6">
+      <div class="w-full max-w-sm aspect-square rounded-2xl bg-gradient-to-br from-marca-400 to-marca-600 flex items-center justify-center shadow-2xl">
+        <svg class="w-16 h-16 text-white/40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m7.5-7.5l-6.364-6.364a2.25 2.25 0 00-3.182 0L3.75 10.5"/></svg>
+      </div>
+      <button onclick="fecharModal()" class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const servicos = [
+    { id:1, nome:'Instalação Elétrica Residencial', preco:'A partir de R$ 150', avaliacoes:89, icon:'⚡', grad:'from-yellow-100 to-amber-200', corIcon:'text-amber-600' },
+    { id:2, nome:'Troca de Disjuntores', preco:'A partir de R$ 80', avaliacoes:67, icon:'🔌', grad:'from-blue-100 to-indigo-200', corIcon:'text-indigo-600' },
+    { id:3, nome:'Instalação de Tomadas e Interruptores', preco:'A partir de R$ 40/un', avaliacoes:102, icon:'💡', grad:'from-emerald-100 to-teal-200', corIcon:'text-teal-600' },
+    { id:4, nome:'Manutenção Elétrica Preventiva', preco:'A partir de R$ 120', avaliacoes:45, icon:'🛠', grad:'from-orange-100 to-red-200', corIcon:'text-red-600' },
+    { id:5, nome:'Instalação de Luminárias e Pendentes', preco:'A partir de R$ 60/un', avaliacoes:38, icon:'🏮', grad:'from-purple-100 to-violet-200', corIcon:'text-violet-600' },
+    { id:6, nome:'Fiação e Cabos Estruturais', preco:'Sob consulta', avaliacoes:23, icon:'📡', grad:'from-cyan-100 to-sky-200', corIcon:'text-sky-600' }
+  ];
+
+  const avaliacoes = [
+    { nome:'Mariana Oliveira', iniciais:'MO', cor:'bg-pink-100 text-pink-700', estrelas:5, data:'2025-01-15', comentario:'Excelente profissional! Rafael fez toda a instalação elétrica do meu apartamento novo. Trabalho limpo, rápido e dentro do prazo. Super recomendo!', servico:'Instalação Elétrica Residencial' },
+    { nome:'Carlos Eduardo Lima', iniciais:'CL', cor:'bg-blue-100 text-blue-700', estrelas:5, data:'2025-01-08', comentario:'Muito competente. Veio no horário marcado, explicou tudo o que foi feito e deixou tudo funcionando perfeitamente. Voltarei a contratar com certeza.', servico:'Troca de Disjuntores' },
+    { nome:'Fernanda Santos', iniciais:'FS', cor:'bg-emerald-100 text-emerald-700', estrelas:5, data:'2024-12-22', comentario:'Rafael é um ótimo profissional. Instalou 8 tomadas e 4 luminárias na minha sala. Trabalho impecável e preço justo. Nota 10!', servico:'Instalação de Tomadas' },
+    { nome:'Roberto Almeida', iniciais:'RA', cor:'bg-orange-100 text-orange-700', estrelas:4, data:'2024-12-10', comentario:'Bom atendimento e serviço bem executado. Apenas atrasou um pouco no horário, mas o resultado final compensou. Recomendo.', servico:'Manutenção Elétrica' },
+    { nome:'Ana Paula Ferreira', iniciais:'AF', cor:'bg-purple-100 text-purple-700', estrelas:5, data:'2024-11-28', comentario:'Contratei para instalação elétrica completa da minha casa. O Rafael foi super profissional, deu dicas importantes e garantiu todo o serviço. Muito satisfeita!', servico:'Instalação Elétrica Residencial' },
+    { nome:'João Pedro Souza', iniciais:'JS', cor:'bg-cyan-100 text-cyan-700', estrelas:5, data:'2024-11-15', comentario:'Melhor eletricista que já contratei. Fez todo o cabeamento do meu escritório com excelência. Pontual, organizado e o preço foi justo. Já indiquei para amigos.', servico:'Fiação e Cabos Estruturais' },
+    { nome:'Patrícia Mendes', iniciais:'PM', cor:'bg-rose-100 text-rose-700', estrelas:4, data:'2024-10-30', comentario:'Serviço bom, bem feito. Instalou um painel de disjuntores novo no meu apartamento. Profissional educado e prestativo.', servico:'Troca de Disjuntores' }
+  ];
+
+  const gradientesGaleria = ['from-yellow-100 to-amber-200','from-blue-100 to-indigo-200','from-emerald-100 to-teal-200','from-orange-100 to-red-200','from-purple-100 to-violet-200','from-cyan-100 to-sky-200'];
+
+  window.detalhe_do_prestador_aba = function(aba) {
+    document.querySelectorAll('[id^="conteudo-"]').forEach(function(el){ el.classList.add('hidden'); });
+    document.querySelectorAll('[id^="tab-"]').forEach(function(el){
+      el.classList.remove('bg-white','text-marca-700','shadow-sm');
+      el.classList.add('text-gray-500');
+    });
+    document.getElementById('conteudo-' + aba).classList.remove('hidden');
+    var tab = document.getElementById('tab-' + aba);
+    tab.classList.add('bg-white','text-marca-700','shadow-sm');
+    tab.classList.remove('text-gray-500');
+  };
+
+  window.detalhe_do_prestador_solicitar = function() {
+    var html = '<div class="p-5">';
+    html += '<div class="flex items-center gap-3 mb-5 p-3 bg-gray-50 rounded-xl">';
+    html += '<div class="w-10 h-10 rounded-full bg-gradient-to-br from-marca-400 to-marca-600 flex items-center justify-center flex-shrink-0"><span class="text-white text-sm font-bold">RC</span></div>';
+    html += '<div><p class="text-sm font-semibold text-gray-900">Rafael Costa</p><p class="text-xs text-gray-500">Eletricista Residencial · 4.9 ★</p></div>';
+    html += '</div>';
+    html += '<div class="space-y-3">';
+    html += '<div><label class="block text-xs font-medium text-gray-600 mb-1">Tipo de Serviço</label><select class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm"><option>Instalação Elétrica Residencial</option><option>Troca de Disjuntores</option><option>Instalação de Tomadas</option><option>Manutenção Elétrica</option><option>Outro</option></select></div>';
+    html += '<div><label class="block text-xs font-medium text-gray-600 mb-1">Endereço</label><input type="text" placeholder="Rua, número, bairro..." class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm"></div>';
+    html += '<div><label class="block text-xs font-medium text-gray-600 mb-1">Data Preferida</label><input type="date" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm"></div>';
+    html += '<div><label class="block text-xs font-medium text-gray-600 mb-1">Descrição</label><textarea rows="2" placeholder="Descreva o que precisa..." class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm resize-none"></textarea></div>';
+    html += '</div>';
+    html += '<button onclick="fecharModal(); toast(\'Solicitação enviada com sucesso!\', \'ok\'); mostrarTela(\'solicitar-servico\');" class="w-full mt-4 py-3 bg-marca-600 text-white rounded-xl font-semibold text-sm active:scale-95 transition-all">Enviar Solicitação</button>';
+    html += '</div>';
+    abrirModal(html, 'Solicitar Serviço');
+  };
+
+  window.detalhe_do_prestador_enviarPedido = function() {
+    var tipo = document.getElementById('sol-tipo').value;
+    var endereco = document.getElementById('sol-endereco').value;
+    if (!tipo) { toast('Selecione o tipo de serviço', 'erro'); return; }
+    if (!endereco.trim()) { toast('Informe o endereço do serviço', 'erro'); return; }
+    fecharModal();
+    setTimeout(function(){ mostrarTela('solicitar-servico'); }, 300);
+    toast('Solicitação enviada! O prestador responderá em breve.', 'ok');
+  };
+
+  window.detalhe_do_prestador_adicionarFoto = function(btn) {
+    toast('Câmera aberta — foto adicionada (simulação)', 'ok');
+    var parent = btn.parentElement;
+    var novo = document.createElement('div');
+    novo.className = 'w-20 h-20 bg-gradient-to-br from-yellow-100 to-amber-200 rounded-xl flex items-center justify-center';
+    novo.innerHTML = '<svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m7.5-7.5l-6.364-6.364a2.25 2.25 0 00-3.182 0L3.75 10.5"/></svg>';
+    parent.insertBefore(novo, btn);
+  };
+
+  window.detalhe_do_prestador_galeria = function(idx) {
+    var html = '<div class="w-full aspect-square rounded-2xl bg-gradient-to-br ' + gradientesGaleria[idx] + ' flex items-center justify-center">';
+    html += '<svg class="w-16 h-16 text-white/40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m7.5-7.5l-6.364-6.364a2.25 2.25 0 00-3.182 0L3.75 10.5"/></svg>';
+    html += '</div>';
+    abrirModal(html, 'Trabalho Realizado');
+  };
+
+  window.abrirWhatsApp = function() {
+    toast('Redirecionando para WhatsApp...', 'info');
+  };
+
+  function renderStars(n) {
+    var s = '';
+    for (var i = 0; i < 5; i++) {
+      if (i < n) {
+        s += '<svg class="w-3.5 h-3.5 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+      } else {
+        s += '<svg class="w-3.5 h-3.5 text-gray-300 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+      }
+    }
+    return s;
+  }
+
+  function renderServicos(items) {
+    var container = document.getElementById('lista-servicos');
+    var vazio = document.getElementById('vazio-servicos');
+    if (!items || items.length === 0) {
+      container.innerHTML = '';
+      vazio.classList.remove('hidden');
+      return;
+    }
+    vazio.classList.add('hidden');
+    var html = '<div class="space-y-2.5">';
+    items.forEach(function(s) {
+      html += '<div class="card flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer" onclick="detalhe_do_prestador_solicitar()">';
+      html += '<div class="w-12 h-12 bg-gradient-to-br ' + s.grad + ' rounded-xl flex items-center justify-center flex-shrink-0 text-xl">' + s.icon + '</div>';
+      html += '<div class="flex-1 min-w-0">';
+      html += '<p class="text-sm font-semibold text-gray-900 truncate">' + s.nome + '</p>';
+      html += '<p class="text-xs text-gray-500">' + s.avaliacoes + ' avaliações</p>';
+      html += '</div>';
+      html += '<div class="text-right flex-shrink-0">';
+      html += '<p class="text-sm font-bold text-marca-700">' + s.preco + '</p>';
+      html += '<svg class="w-4 h-4 text-gray-400 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>';
+      html += '</div></div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  function renderAvaliacoes(items) {
+    var container = document.getElementById('lista-avaliacoes');
+    var html = '';
+    items.forEach(function(a) {
+      html += '<div class="card">';
+      html += '<div class="flex items-start gap-3">';
+      html += '<div class="w-10 h-10 rounded-full ' + a.cor + ' flex items-center justify-center flex-shrink-0 text-xs font-bold">' + a.iniciais + '</div>';
+      html += '<div class="flex-1 min-w-0">';
+      html += '<div class="flex items-center justify-between">';
+      html += '<p class="text-sm font-semibold text-gray-900">' + a.nome + '</p>';
+      html += '<span class="text-xs text-gray-400">' + a.data + '</span>';
+      html += '</div>';
+      html += '<div class="flex gap-0.5 mt-0.5">' + renderStars(a.estrelas) + '</div>';
+      html += '<p class="text-xs text-marca-600 mt-1">' + a.servico + '</p>';
+      html += '<p class="text-sm text-gray-600 mt-1.5 leading-relaxed">' + a.comentario + '</p>';
+      html += '</div></div></div>';
+    });
+    container.innerHTML = html;
+  }
+
+  renderServicos(servicos);
+  renderAvaliacoes(avaliacoes);
+})();
+</script>
+
     <!-- TELAS -->
 
     </main>
