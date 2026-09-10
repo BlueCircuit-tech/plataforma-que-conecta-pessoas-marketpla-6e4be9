@@ -157,7 +157,259 @@
 
     <main id="main-content" class="flex-1 overflow-y-auto overflow-x-hidden bg-neutral-100 relative">
 
-      <!-- TELAS -->
+      <section data-tela="catalogo-de-servicos" class="hidden">
+  <div id="catalogo-refresher" class="flex items-center justify-center h-8 text-marca-600 text-sm font-medium opacity-0 transition-opacity duration-300">
+    <svg class="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+    Atualizando...
+  </div>
+  <header class="px-5 pt-4 pb-3">
+    <h1 class="font-display text-2xl font-bold text-gray-900 leading-tight">Encontre um profissional</h1>
+    <p class="text-sm text-gray-500 mt-0.5">Serviços próximos a você, com avaliação verificada</p>
+    <div class="mt-4 relative">
+      <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="cat-busca" type="text" placeholder="Buscar serviço ou profissional..." class="w-full pl-11 pr-20 py-3 bg-gray-100 border border-transparent rounded-2xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-marca-500 focus:bg-white focus:border-marca-200 transition font-body" oninput="catalogo_de_servicos_buscar(this.value)">
+      <button onclick="catalogo_de_servicos_abrirFiltros()" class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-marca-600 text-white text-xs font-semibold rounded-xl hover:bg-marca-700 active:scale-95 transition flex items-center gap-1" id="btn-filtro-contador">
+        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+        <span id="contador-filtros">Filtros</span>
+      </button>
+    </div>
+  </header>
+  <div class="overflow-x-auto pb-3 px-5 scrollbar-none" style="-webkit-overflow-scrolling: touch; scrollbar-width: none;">
+    <div id="cat-categorias" class="flex gap-2" style="width: max-content;"></div>
+  </div>
+  <div id="cat-contador-resultados" class="px-5 pb-2 text-xs text-gray-400"></div>
+  <main id="cat-lista" class="px-5 pb-28 space-y-3 overflow-y-auto" style="max-height: calc(100vh - 290px); -webkit-overflow-scrolling: touch;"></main>
+  <div id="cat-vazio" class="hidden px-5 pb-28 text-center py-16">
+    <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4"><svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="1.5"/><path d="m21 21-4.35-4.35" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    <p class="font-display font-semibold text-gray-600 text-base">Nenhum profissional encontrado</p>
+    <p class="text-sm text-gray-400 mt-1">Tente ajustar filtros ou buscar outro termo</p>
+    <button onclick="catalogo_de_servicos_limparFiltros()" class="mt-4 px-5 py-2 bg-marca-600 text-white text-sm font-semibold rounded-xl hover:bg-marca-700 active:scale-95 transition">Limpar filtros</button>
+  </div>
+  <button onclick="catalogo_de_servicos_abrirFiltros()" class="fixed bottom-24 right-5 z-40 w-14 h-14 bg-marca-600 text-white rounded-full shadow-lg shadow-marca-600/30 flex items-center justify-center hover:bg-marca-700 active:scale-90 transition md:bottom-8">
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+  </button>
+
+  <div id="modal-filtros" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="catalogo_de_servicos_fecharFiltros()"></div>
+    <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 pb-8 transform transition-transform duration-300 translate-y-full" id="modal-filtros-painel" style="max-width: 430px; margin: 0 auto;">
+      <div class="w-10 h-1 bg-gray-300 rounded-full mx-auto mb-5"></div>
+      <h3 class="font-display font-bold text-lg text-gray-900 mb-5">Filtros</h3>
+      <div class="space-y-5">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Localização</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="catalogo_de_servicos_selFiltro(this,'local','centro')" class="filtro-opt filtro-local px-3 py-2 border rounded-xl text-sm font-medium transition hover:border-marca-400" data-val="centro">Centro</button>
+            <button onclick="catalogo_de_servicos_selFiltro(this,'local','zona-sul')" class="filtro-opt filtro-local px-3 py-2 border rounded-xl text-sm font-medium transition hover:border-marca-400" data-val="zona-sul">Zona Sul</button>
+            <button onclick="catalogo_de_servicos_selFiltro(this,'local','zona-norte')" class="filtro-opt filtro-local px-3 py-2 border rounded-xl text-sm font-medium transition hover:border-marca-400" data-val="zona-norte">Zona Norte</button>
+            <button onclick="catalogo_de_servicos_selFiltro(this,'local','zona-leste')" class="filtro-opt filtro-local px-3 py-2 border rounded-xl text-sm font-medium transition hover:border-marca-400" data-val="zona-leste">Zona Leste</button>
+            <button onclick="catalogo_de_servicos_selFiltro(this,'local','zona-oeste')" class="filtro-opt filtro-local px-3 py-2 border rounded-xl text-sm font-medium transition hover:border-marca-400" data-val="zona-oeste">Zona Oeste</button>
+            <button onclick="catalogo_de_servicos_selFiltro(this,'local','abc')" class="filtro-opt filtro-local px-3 py-2 border rounded-xl text-sm font-medium transition hover:border-marca-400" data-val="abc">Grande SP</button>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Faixa de Preço <span id="preco-range-label" class="text-marca-600">R$ 0 — R$ 500</span></label>
+          <input id="cat-preco-max" type="range" min="50" max="500" step="10" value="500" class="w-full accent-marca-600" oninput="catalogo_de_servicos_atualizaPreco(this.value)">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Disponibilidade</label>
+          <div class="space-y-2">
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" value="hoje" class="filtro-disp w-4 h-4 text-marca-600 rounded border-gray-300 focus:ring-marca-500"><span class="text-sm text-gray-700">Disponível hoje</span></label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" value="amanha" class="filtro-disp w-4 h-4 text-marca-600 rounded border-gray-300 focus:ring-marca-500"><span class="text-sm text-gray-700">Disponível amanhã</span></label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" value="fds" class="filtro-disp w-4 h-4 text-marca-600 rounded border-gray-300 focus:ring-marca-500"><span class="text-sm text-gray-700">Disponível fim de semana</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="catalogo_de_servicos_limparFiltros();catalogo_de_servicos_fecharFiltros()" class="flex-1 py-3 border border-gray-200 rounded-2xl text-sm font-semibold text-gray-600 hover:bg-gray-50 active:scale-95 transition">Limpar</button>
+        <button onclick="catalogo_de_servicos_aplicarFiltros();catalogo_de_servicos_fecharFiltros()" class="flex-1 py-3 bg-marca-600 text-white rounded-2xl text-sm font-semibold hover:bg-marca-700 active:scale-95 transition">Aplicar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+'use strict';
+
+const CORES=['bg-emerald-500','bg-blue-500','bg-amber-500','bg-rose-500','bg-violet-500','bg-teal-500','bg-orange-500','bg-cyan-500','bg-pink-500','bg-indigo-500'];
+const CORES_TEXTO=['text-emerald-600','text-blue-600','text-amber-600','text-rose-600','text-violet-600','text-teal-600','text-orange-600','text-cyan-600','text-pink-600','text-indigo-600'];
+const CORES_BG=['bg-emerald-50','bg-blue-50','bg-amber-50','bg-rose-50','bg-violet-50','bg-teal-50','bg-orange-50','bg-cyan-50','bg-pink-50','bg-indigo-50'];
+const CORES_BADGE=['bg-emerald-100 text-emerald-700','bg-blue-100 text-blue-700','bg-amber-100 text-amber-700','bg-rose-100 text-rose-700','bg-violet-100 text-violet-700','bg-teal-100 text-teal-700','bg-orange-100 text-orange-700','bg-cyan-100 text-cyan-700','bg-pink-100 text-pink-700','bg-indigo-100 text-indigo-700'];
+
+const PRESTADORES=[
+  {id:1,nome:"Ana Beatriz Costa",servico:"Limpeza Residencial",categoria:"Limpeza",iniciais:"AB",cor:0,nota:4.9,avaliacoes:127,preco:80,local:"Centro",disp:["hoje","amanha","fds"],bio:"Especialista em limpeza residencial e comercial com 8 anos de experiência. Trabalho com produtos ecológicos e equipamentos profissional. Referências disponíveis.",telefone:"(11) 99876-5432",foto:null},
+  {id:2,nome:"Carlos Eduardo Silva",servico:"Eletricista Residencial",categoria:"Elétrica",iniciais:"CS",cor:1,nota:4.7,avaliacoes:89,preco:120,local:"Zona Sul",disp:["hoje","amanha"],bio:"Eletricista certificado CREA com 12 anos de experiência. Instalação, manutenção e reparos elétricos em geral. Atendimento emergencial 24h.",telefone:"(11) 98765-4321",foto:null},
+  {id:3,nome:"Roberto Mendes Oliveira",servico:"Encanador",categoria:"Encanamento",iniciais:"RM",cor:2,nota:4.8,avaliacoes:203,preco:90,local:"Zona Norte",disp:["amanha","fds"],bio:"Encanador com 15 anos de experiência. Conserto de vazamentos, instalação hidráulica, desentupimento. Ferramentas e materiais inclusos no orçamento.",telefone:"(11) 97654-3210",foto:null},
+  {id:4,nome:"Juliana Alves Pereira",servico:"Faxina e Organização",categoria:"Limpeza",iniciais:"JA",cor:3,nota:5.0,avaliacoes:64,preco:100,local:"Zona Oeste",disp:["hoje","fds"],bio:"Organizadora profissional e diarista. Limpeza profunda, organização de closets e despensas. Trabalho com produtos hipoalergênicos.",telefone:"(11) 96543-2109",foto:null},
+  {id:5,nome:"Marcos Vinícius Santos",servico:"Marceneiro",categoria:"Marcenaria",iniciais:"MV",cor:4,nota:4.6,avaliacoes:41,preco:150,local:"Zona Leste",disp:["fds"],bio:"Marceneiro artesanal especializado em móveis sob medida. Restauração de peças antigas, móveis planejados e decoração em madeira maciça.",telefone:"(11) 95432-1098",foto:null},
+  {id:6,nome:"Fernanda Lima Rocha",servico:"Manicure e Pedicure",categoria:"Estética",iniciais:"FL",cor:5,nota:4.9,avaliacoes:156,preco:60,local:"Centro",disp:["hoje","amanha","fds"],bio:"Nail designer com formação internacional. Unhas em gel, fibra de vidro, alongamento e nail art. Materiais esterilizados e kit individual para cada cliente.",telefone:"(11) 94321-0987",foto:null},
+  {id:7,nome:"Ricardo Souza Ferreira",servico:"Pintor",categoria:"Pintura",iniciais:"RS",cor:6,nota:4.5,avaliacoes:78,preco:200,local:"Zona Sul",disp:["amanha","fds"],bio:"Pintor profissional com 10 anos de experiência. Pintura interna e externa, texturas, grafiato e efeitos decorativos. Material de primeira qualidade.",telefone:"(11) 93210-9876",foto:null},
+  {id:8,nome:"Patrícia Gomes Dias",servico:"Dedetização",categoria:"Dedetização",iniciais:"PG",cor:7,nota:4.8,avaliacoes:92,preco:180,local:"Zona Norte",disp:["hoje"],bio:"Empresa de controle de pragas com produtos certificados pela ANVISA. Dedetização, desratização, descupinização. Garantia de 6 meses.",telefone:"(11) 92109-8765",foto:null},
+  {id:9,nome:"Lucas Andrade Pinto",servico:"Eletricista Industrial",categoria:"Elétrica",iniciais:"LA",cor:8,nota:4.4,avaliacoes:35,preco:160,local:"Zona Leste",disp:["hoje","amanha"],bio:"Eletricista especializado em instalações industriais e prediais. Projetos elétricos, SPDA, CFTV e automação. CREA ativo.",telefone:"(11) 91098-7654",foto:null},
+  {id:10,nome:"Amanda Cristina Vieira",servico:"Design de Sobrancelhas",categoria:"Estética",iniciais:"AV",cor:9,nota:4.7,avaliacoes:112,preco:50,local:"Centro",disp:["hoje","amanha","fds"],bio:"Designer de sobrancelhas e profissional de estética. Design com henna, micropigmentação fio a fio, limpeza de pele e massagem facial.",telefone:"(11) 90987-6543",foto:null}
+];
+
+const CATEGORIAS=[
+  {id:"todas",label:"Todos",icone:'<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke-width="2"/></svg>'},
+  {id:"Limpeza",label:"Limpeza",icone:'<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h1m16 0h1M4 4v5.5A7 7 0 0012 21a7 7 0 007-7V4M4 4l2.5 15.5a2 2 0 002 1.5h7a2 2 0 002-1.5L20 4"/></svg>'},
+  {id:"Elétrica",label:"Elétrica",icone:'<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>'},
+  {id:"Encanamento",label:"Encanamento",icone:'<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>'},
+  {id:"Marcenaria",label:"Marcenaria",icone:'<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg>'},
+  {id:"Pintura",label:"Pintura",icone:'<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>'},
+  {id:"Estética",label:"Estética",icone:'<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>'},
+  {id:"Dedetização",label:"Dedetização",icone:'<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>'}
+];
+
+const LOC_MAP={centro:"Centro","zona-sul":"Zona Sul","zona-norte":"Zona Norte","zona-leste":"Zona Leste","zona-oeste":"Zona Oeste",abc:"Grande SP"};
+
+let catAtiva="todas";
+let buscaAtual="";
+let filtroLocal=null;
+let filtroPrecoMax=500;
+let filtroDisp=[];
+let filtrosAtivos=0;
+
+function catalogo_de_servicos_estrelas(nota){
+  const cheias=Math.floor(nota);
+  const meia=nota%1>=0.5?1:0;
+  const vazias=5-cheias-meia;
+  let s='';
+  for(let i=0;i<cheias;i++) s+='<svg class="w-3.5 h-3.5 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+  if(meia) s+='<svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 20 20"><defs><linearGradient id="hg"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="#D1D5DB"/></linearGradient></defs><path fill="url(#hg)" stroke="currentColor" stroke-width="0.5" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+  for(let i=0;i<vazias;i++) s+='<svg class="w-3.5 h-3.5 text-gray-200 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+  return s;
+}
+
+function catalogo_de_servicos_verDisp(disp){
+  if(disp.includes("hoje")) return {texto:"Hoje",classe:"bg-green-100 text-green-700"};
+  if(disp.includes("amanha")) return {texto:"Amanhã",classe:"bg-blue-100 text-blue-700"};
+  return {texto:"Fim de semana",classe:"bg-amber-100 text-amber-700"};
+}
+
+function catalogo_de_servicos_selFiltro(btn,tipo,val){
+  if(tipo==="local"){
+    document.querySelectorAll(".filtro-local").forEach(b=>{b.classList.remove("bg-marca-600","text-white","border-marca-600");b.classList.add("border-gray-200","text-gray-700")});
+    if(filtroLocal===val){filtroLocal=null;btn.classList.remove("bg-marca-600","text-white","border-marca-600");btn.classList.add("border-gray-200","text-gray-700")}
+    else{filtroLocal=val;btn.classList.add("bg-marca-600","text-white","border-marca-600");btn.classList.remove("border-gray-200","text-gray-700")}
+  }
+}
+
+function catalogo_de_servicos_atualizaPreco(v){
+  document.getElementById("preco-range-label").textContent="R$ 0 — "+brl(Number(v));
+}
+
+function catalogo_de_servicos_abrirFiltros(){
+  const m=document.getElementById("modal-filtros");m.classList.remove("hidden");
+  requestAnimationFrame(()=>{document.getElementById("modal-filtros-painel").classList.remove("translate-y-full")});
+}
+
+function catalogo_de_servicos_fecharFiltros(){
+  document.getElementById("modal-filtros-painel").classList.add("translate-y-full");
+  setTimeout(()=>{document.getElementById("modal-filtros").classList.add("hidden")},300);
+}
+
+function catalogo_de_servicos_aplicarFiltros(){
+  const precoInput=document.getElementById("cat-preco-max");
+  filtroPrecoMax=Number(precoInput.value);
+  filtroDisp=[...document.querySelectorAll(".filtro-disp:checked")].map(c=>c.value);
+  filtrosAtivos=(filtroLocal?1:0)+(filtroPrecoMax<500?1:0)+(filtroDisp.length>0?1:0);
+  if(filtrosAtivos>0){document.getElementById("contador-filtros").textContent="Filtros ("+filtrosAtivos+")";document.getElementById("btn-filtro-contador").classList.add("ring-2","ring-marca-300","ring-offset-1")}
+  else{document.getElementById("contador-filtros").textContent="Filtros";document.getElementById("btn-filtro-contador").classList.remove("ring-2","ring-marca-300","ring-offset-1")}
+  catalogo_de_servicos_render();
+  toast("Filtros aplicados","ok");
+}
+
+function catalogo_de_servicos_limparFiltros(){
+  filtroLocal=null;filtroPrecoMax=500;filtroDisp=[];filtrosAtivos=0;
+  document.getElementById("cat-preco-max").value=500;document.getElementById("preco-range-label").textContent="R$ 0 — "+brl(500);
+  document.querySelectorAll(".filtro-local").forEach(b=>{b.classList.remove("bg-marca-600","text-white","border-marca-600");b.classList.add("border-gray-200","text-gray-700")});
+  document.querySelectorAll(".filtro-disp").forEach(c=>c.checked=false);
+  document.getElementById("contador-filtros").textContent="Filtros";
+  document.getElementById("btn-filtro-contador").classList.remove("ring-2","ring-marca-300","ring-offset-1");
+  catalogo_de_servicos_render();
+}
+
+function catalogo_de_servicos_filtrados(){
+  let r=[...PRESTADORES];
+  if(catAtiva!=="todas") r=r.filter(p=>p.categoria===catAtiva);
+  const b=buscaAtual.toLowerCase().trim();
+  if(b) r=r.filter(p=>p.nome.toLowerCase().includes(b)||p.servico.toLowerCase().includes(b)||p.categoria.toLowerCase().includes(b)||p.local.toLowerCase().includes(b));
+  if(filtroLocal) r=r.filter(p=>p.local===filtroLocal);
+  if(filtroPrecoMax<500) r=r.filter(p=>p.preco<=filtroPrecoMax);
+  if(filtroDisp.length>0) r=r.filter(p=>filtroDisp.some(d=>p.disp.includes(d)));
+  return r;
+}
+
+function catalogo_de_servicos_card(p){
+  const d=catalogo_de_servicos_verDisp(p.disp);
+  const r=document.createElement("div");
+  r.className="card bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md active:scale-[0.98] transition-all duration-200";
+  r.onclick=()=>catalogo_de_servicos_abrirDetalhe(p.id);
+  const tags=p.categoria==="Limpeza"||p.categoria==="Dedetização"?"Ecológico":"Verificado";
+  const tagCls=p.categoria==="Limpeza"||p.categoria==="Dedetização"?"bg-green-50 text-green-600":"bg-blue-50 text-blue-600";
+  const localMap=LOC_MAP[p.local]||p.local;
+  r.innerHTML='<div class="flex items-center gap-3 p-4"><div class="w-14 h-14 rounded-full '+CORES[p.cor]+' flex items-center justify-center text-white font-display font-bold text-lg flex-shrink-0">'+p.iniciais+'</div><div class="flex-1 min-w-0"><div class="flex items-center gap-2"><h3 class="font-display font-semibold text-gray-900 text-sm truncate">'+p.nome+'</h3><span class="'+tagCls+' text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0">'+tags+'</span></div><p class="text-xs text-gray-500 mt-0.5">'+p.servico+'</p><div class="flex items-center gap-2 mt-1.5"><div class="flex items-center gap-0.5">'+catalogo_de_servicos_estrelas(p.nota)+'</div><span class="text-xs font-semibold text-gray-700">'+p.nota+'</span><span class="text-[10px] text-gray-400">('+p.avaliacoes+')</span></div></div><div class="text-right flex-shrink-0"><p class="font-display font-bold text-marca-600 text-sm">R$ '+p.preco+'</p><p class="text-[10px] text-gray-400">a partir de</p><span class="inline-block mt-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold '+d.classe+'">'+d.texto+'</span></div></div><div class="px-4 pb-3 flex items-center gap-2"><svg class="h-3.5 w-3.5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5" fill="currentColor"/></svg><span class="text-xs text-gray-500 truncate">'+localMap+'</span></div>';
+  return r;
+}
+
+function catalogo_de_servicos_avaliacaoHTML(p){
+  const reviews=[
+    {user:"Mariana S.",texto:"Excelente trabalho! Muito profissional e caprichosa. Recomendo muito!",nota:5,tempo:"há 2 dias"},
+    {user:"João P.",texto:"Bom atendimento, chegou no horário e fez um serviço impecável.",nota:5,tempo:"há 1 semana"},
+    {user:"Carla M.",texto:"Ótima experiência. Já contratei três vezes e sempre sai satisfeita.",nota:5,tempo:"há 2 semanas"}
+  ];
+  let h='<div class="space-y-3 max-h-48 overflow-y-auto pr-1">';
+  reviews.forEach(rv=>{h+='<div class="bg-gray-50 rounded-xl p-3"><div class="flex items-center justify-between"><span class="text-sm font-semibold text-gray-800">'+rv.user+'</span><span class="text-[10px] text-gray-400">'+rv.tempo+'</span></div><div class="flex gap-0.5 mt-1">'+catalogo_de_servicos_estrelas(rv.nota)+'</div><p class="text-xs text-gray-600 mt-1.5 leading-relaxed">'+rv.texto+'</p></div>'});
+  h+='</div>';
+  return h;
+}
+
+function catalogo_de_servicos_abrirDetalhe(id){
+  const p=PRESTADORES.find(x=>x.id===id);if(!p)return;
+  const d=catalogo_de_servicos_verDisp(p.disp);
+  const locMap=LOC_MAP[p.local]||p.local;
+  abrirModal('<div class="space-y-4"><div class="flex items-center gap-4"><div class="w-16 h-16 rounded-full '+CORES[p.cor]+' flex items-center justify-center text-white font-display font-bold text-xl flex-shrink-0">'+p.iniciais+'</div><div><h3 class="font-display font-bold text-gray-900 text-lg leading-tight">'+p.nome+'</h3><p class="text-sm text-gray-500 mt-0.5">'+p.servico+'</p><div class="flex items-center gap-1.5 mt-1">'+catalogo_de_servicos_estrelas(p.nota)+'<span class="text-sm font-semibold text-gray-700">'+p.nota+'</span><span class="text-xs text-gray-400">('+p.avaliacoes+' avaliações)</span></div></div></div><div class="flex gap-2"><span class="px-3 py-1 '+CORES_BADGE[p.cor]+' text-xs font-semibold rounded-full">'+p.categoria+'</span><span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full">Verificado</span><span class="px-3 py-1 '+d.classe+' text-xs font-semibold rounded-full">Disponível '+d.texto+'</span></div><div class="bg-gray-50 rounded-xl p-4"><h4 class="text-sm font-semibold text-gray-700 mb-1">Sobre</h4><p class="text-sm text-gray-600 leading-relaxed">'+p.bio+'</p></div><div class="grid grid-cols-2 gap-3"><div class="bg-marca-50 rounded-xl p-3 text-center"><svg class="h-5 w-5 text-marca-600 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><p class="font-display font-bold text-marca-600 text-sm">'+brl(p.preco)+'</p><p class="text-[10px] text-gray-500">preço inicial</p></div><div class="bg-blue-50 rounded-xl p-3 text-center"><svg class="h-5 w-5 text-blue-600 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/></svg><p class="text-xs font-semibold text-blue-700 mt-1">'+locMap+'</p><p class="text-[10px] text-gray-500">localização</p></div></div><div><h4 class="text-sm font-semibold text-gray-700 mb-2">Avaliações</h4>'+catalogo_de_servicos_avaliacaoHTML(p)+'</div><div class="flex gap-3 pt-2"><button onclick="fecharModal();mostrarTela(\'solicitar-servico\');toast(\'Profissional selecionado: '+p.nome+'\',\'info\')" class="flex-1 py-3 bg-marca-600 text-white text-sm font-semibold rounded-xl hover:bg-marca-700 active:scale-95 transition">Solicitar orçamento</button><button onclick="fecharModal();toast(\'Abrindo chat com '+p.nome+'...\',\'info\')" class="px-4 py-3 border border-gray-200 text-gray-600 rounded-xl hover:bg-gray-50 active:scale-95 transition"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></button></div></div>',p.nome);
+}
+
+function catalogo_de_servicos_render(){
+  const lista=document.getElementById("cat-lista");
+  const vazio=document.getElementById("cat-vazio");
+  const cont=document.getElementById("cat-contador-resultados");
+  const resultados=catalogo_de_servicos_filtrados();
+  lista.innerHTML="";
+  if(resultados.length===0){lista.classList.add("hidden");vazio.classList.remove("hidden");cont.textContent="";return}
+  lista.classList.remove("hidden");vazio.classList.add("hidden");
+  cont.textContent=resultados.length+" profissional"+(resultados.length!==1?"s":"")+" encontrado"+(resultados.length!==1?"s":"");
+  resultados.forEach(p=>lista.appendChild(catalogo_de_servicos_card(p)));
+}
+
+function catalogo_de_servicos_buscar(v){buscaAtual=v;catalogo_de_servicos_render()}
+
+function catalogo_de_servicos_init(){
+  const catContainer=document.getElementById("cat-categorias");
+  CATEGORIAS.forEach(cat=>{
+    const btn=document.createElement("button");
+    btn.className="cat-btn flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-200 border";
+    btn.dataset.cat=cat.id;
+    if(cat.id==="todas"){btn.classList.add("bg-marca-600","text-white","border-marca-600","shadow-sm")}
+    else{btn.classList.add("bg-white","text-gray-600","border-gray-200","hover:border-marca-300","hover:text-marca-600","active:scale-95")}
+    btn.innerHTML=cat.icone+cat.label;
+    btn.onclick=()=>{
+      catAtiva=cat.id;
+      document.querySelectorAll(".cat-btn").forEach(b=>{b.classList.remove("bg-marca-600","text-white","border-marca-600","shadow-sm");b.classList.add("bg-white","text-gray-600","border-gray-200","hover:border-marca-300","hover:text-marca-600")});
+      btn.classList.add("bg-marca-600","text-white","border-marca-600","shadow-sm");btn.classList.remove("bg-white","text-gray-600","border-gray-200","hover:border-marca-300","hover:text-marca-600");
+      catalogo_de_servicos_render();
+    };
+    catContainer.appendChild(btn);
+  });
+  catalogo_de_servicos_render();
+}
+
+window._catalogoInit=catalogo_de_servicos_init;
+})();
+</script>
+
+    <!-- TELAS -->
 
     </main>
 
