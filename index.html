@@ -1175,6 +1175,367 @@ window._catalogoInit=catalogo_de_servicos_init;
   </script>
 </section>
 
+    <section data-tela="pagamento-e-creditos" class="hidden">
+  <div class="space-y-4 pb-6">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm text-gray-500 mb-0.5">Solicitação #4829</p>
+        <h1 class="font-display text-xl font-bold text-gray-900">Confirmar Pagamento</h1>
+      </div>
+      <button onclick="mostrarTela('acompanhar-pedido')" class="text-sm font-medium text-marca-600 hover:text-marca-700 flex items-center gap-1 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        Histórico
+      </button>
+    </div>
+
+    <div class="card p-4">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Serviço contratado</p>
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-marca-100 to-marca-200 flex items-center justify-center flex-shrink-0">
+          <span class="font-display font-bold text-marca-700 text-sm">RC</span>
+        </div>
+        <div class="min-w-0">
+          <p class="font-semibold text-sm text-gray-900 truncate">Roberto Carlos Silva</p>
+          <p class="text-xs text-gray-500">Eletricista Residencial · ⭐ 4.9 (127 avaliações)</p>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-3 space-y-1.5">
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-600">Instalação elétrica completa</span>
+          <span class="font-medium text-gray-900" id="valorServico">R$ 280,00</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-600">Agendamento</span>
+          <span class="font-medium text-gray-900">24 Jan 2026 · 14:00</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-600">Endereço</span>
+          <span class="font-medium text-gray-900 text-right text-xs ml-2">Rua das Flores, 142 — Jardim Europa, SP</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2.5 px-1">Forma de pagamento</p>
+      <div class="space-y-2.5" id="metodosPagamento">
+        <button onclick="pagamento_e_creditos_selecionarMetodo('cartao')" class="metodo-pagamento w-full card p-3.5 flex items-center gap-3.5 transition-all border-2 border-transparent hover:border-marca-200" data-metodo="cartao">
+          <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke-width="2"/><path d="M2 10h20" stroke-width="2"/></svg>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-semibold text-sm text-gray-900">Cartão de Crédito</p>
+            <p class="text-xs text-gray-500">Visa, Mastercard, Elo · até 3x sem juros</p>
+          </div>
+          <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center metodo-radio">
+            <div class="w-2.5 h-2.5 rounded-full bg-marca-500 scale-0 transition-transform"></div>
+          </div>
+        </button>
+
+        <button onclick="pagamento_e_creditos_selecionarMetodo('pix')" class="metodo-pagamento w-full card p-3.5 flex items-center gap-3.5 transition-all border-2 border-transparent hover:border-marca-200" data-metodo="pix">
+          <div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-2.686 6-6 6s-6-2.483-6-6 2.686-6 6-6 6 2.483 6 6zM12 3v3m0 12v3M3 12h3m12 0h3"/></svg>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-semibold text-sm text-gray-900">Pix</p>
+            <p class="text-xs text-gray-500">Aprovação imediata · sem taxa adicional</p>
+          </div>
+          <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center metodo-radio">
+            <div class="w-2.5 h-2.5 rounded-full bg-marca-500 scale-0 transition-transform"></div>
+          </div>
+        </button>
+
+        <button onclick="pagamento_e_creditos_selecionarMetodo('boleto')" class="metodo-pagamento w-full card p-3.5 flex items-center gap-3.5 transition-all border-2 border-transparent hover:border-marca-200" data-metodo="boleto">
+          <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-semibold text-sm text-gray-900">Boleto Bancário</p>
+            <p class="text-xs text-gray-500">Vencimento em 3 dias úteis</p>
+          </div>
+          <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center metodo-radio">
+            <div class="w-2.5 h-2.5 rounded-full bg-marca-500 scale-0 transition-transform"></div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div id="campoCartao" class="card p-4 space-y-3 hidden">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Dados do cartão</p>
+      <div>
+        <label class="block text-xs font-medium text-gray-600 mb-1">Número do cartão</label>
+        <input type="text" id="numeroCartao" placeholder="0000 0000 0000 0000" oninput="pagamento_e_creditos_mascaraCartao(this)" maxlength="19" class="w-full px-3 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all">
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-medium text-gray-600 mb-1">Validade</label>
+          <input type="text" placeholder="MM/AA" oninput="pagamento_e_creditos_mascaraValidade(this)" maxlength="5" class="w-full px-3 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all">
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-gray-600 mb-1">CVV</label>
+          <input type="text" placeholder="123" maxlength="4" class="w-full px-3 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-gray-600 mb-1">Nome no cartão</label>
+        <input type="text" placeholder="Como está no cartão" class="w-full px-3 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all">
+      </div>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2.5 px-1">Cupom de desconto</p>
+      <div class="flex gap-2">
+        <input type="text" id="cupomInput" placeholder="Digite seu cupom" class="flex-1 px-3 py-2.5 text-sm bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all">
+        <button onclick="pagamento_e_creditos_aplicarCupom()" class="px-4 py-2.5 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 active:scale-95 transition-all">Aplicar</button>
+      </div>
+      <div id="cupomAplicado" class="hidden mt-2 bg-green-50 border border-green-200 rounded-lg px-3 py-2 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span class="text-sm text-green-800 font-medium" id="cupomTexto">PRIMEIRA10 — 10% OFF</span>
+        </div>
+        <button onclick="pagamento_e_creditos_removerCupom()" class="text-green-600 hover:text-green-800">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="card p-4 space-y-2.5">
+      <div class="flex justify-between text-sm">
+        <span class="text-gray-600">Subtotal do serviço</span>
+        <span class="text-gray-900 font-medium" id="subtotal">R$ 280,00</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span class="text-gray-600">Taxa da plataforma (12%)</span>
+        <span class="text-gray-900 font-medium" id="taxaPlataforma">R$ 33,60</span>
+      </div>
+      <div id="linhaDesconto" class="hidden flex justify-between text-sm">
+        <span class="text-green-600">Desconto</span>
+        <span class="text-green-600 font-medium" id="valorDesconto">- R$ 28,00</span>
+      </div>
+      <div class="border-t border-gray-100 pt-2.5 flex justify-between items-center">
+        <span class="font-semibold text-gray-900">Total</span>
+        <span class="font-display font-bold text-xl text-gray-900" id="valorTotal">R$ 313,60</span>
+      </div>
+    </div>
+
+    <label class="flex items-start gap-3 cursor-pointer group" id="termosLabel">
+      <div class="relative mt-0.5">
+        <input type="checkbox" id="aceitaTermos" class="peer sr-only" onchange="pagamento_e_creditos_atualizarBotao()">
+        <div class="w-5 h-5 rounded border-2 border-gray-300 peer-checked:bg-marca-500 peer-checked:border-marca-500 transition-all flex items-center justify-center">
+          <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+        </div>
+      </div>
+      <span class="text-xs text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors">
+        Li e aceito os <button onclick="mostrarTela('painel-administrativo')" class="text-marca-600 underline font-medium">Termos de Uso</button> e a <button onclick="mostrarTela('painel-administrativo')" class="text-marca-600 underline font-medium">Política de Privacidade</button>. Autorizo o pagamento conforme condições descritas.
+      </span>
+    </label>
+
+    <button onclick="pagamento_e_creditos_pagar()" id="botaoPagar" class="w-full btn py-3.5 font-semibold text-base opacity-50 cursor-not-allowed" disabled>
+      <span class="flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        Pagar e Confirmar Pedido
+      </span>
+    </button>
+
+    <div class="flex items-center justify-center gap-4 pt-1">
+      <div class="flex items-center gap-1.5 text-gray-400">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <span class="text-xs">Pagamento seguro</span>
+      </div>
+      <div class="flex items-center gap-1.5 text-gray-400">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span class="text-xs">SSL 256 bits</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="historicoTransacoes" class="hidden space-y-3 pt-4 border-t border-gray-100">
+    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide px-1">Transações anteriores</p>
+    <div id="listaTransacoes" class="space-y-2.5"></div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var metodoSelecionado = null;
+  var cupomAplicado = false;
+  var desconto = 0;
+  var valorBase = 280.00;
+  var taxaPct = 0.12;
+
+  window.pagamento_e_creditos_selecionarMetodo = function(metodo) {
+    metodoSelecionado = metodo;
+    var botoes = document.querySelectorAll('.metodo-pagamento');
+    botoes.forEach(function(btn) {
+      var radio = btn.querySelector('.metodo-radio div');
+      if (btn.dataset.metodo === metodo) {
+        btn.classList.add('border-marca-300', 'bg-marca-50/30');
+        btn.classList.remove('border-transparent');
+        radio.classList.add('scale-100');
+        radio.classList.remove('scale-0');
+      } else {
+        btn.classList.remove('border-marca-300', 'bg-marca-50/30');
+        btn.classList.add('border-transparent');
+        radio.classList.remove('scale-100');
+        radio.classList.add('scale-0');
+      }
+    });
+
+    var campoCartao = document.getElementById('campoCartao');
+    if (metodo === 'cartao') {
+      campoCartao.classList.remove('hidden');
+      setTimeout(function() { campoCartao.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+    } else {
+      campoCartao.classList.add('hidden');
+    }
+    pagamento_e_creditos_atualizarBotao();
+  };
+
+  window.pagamento_e_creditos_aplicarCupom = function() {
+    var input = document.getElementById('cupomInput');
+    var valor = input.value.trim().toUpperCase();
+    if (!valor) { toast('Digite um código de cupom', 'erro'); return; }
+    if (cupomAplicado) { toast('Cupom já aplicado', 'info'); return; }
+    var cuponsValidos = { 'PRIMEIRA10': 0.10, 'BEMVINDO': 0.15, 'DESCONTO20': 0.20, 'BLUECIRCUIT': 0.10 };
+    if (cuponsValidos[valor]) {
+      cupomAplicado = true;
+      desconto = cuponsValidos[valor];
+      var vlDesconto = valorBase * desconto;
+      var total = (valorBase * (1 + taxaPct)) - vlDesconto;
+      document.getElementById('cupomAplicado').classList.remove('hidden');
+      document.getElementById('cupomTexto').textContent = valor + ' — ' + (desconto * 100) + '% OFF';
+      document.getElementById('linhaDesconto').classList.remove('hidden');
+      document.getElementById('linhaDesconto').classList.add('flex');
+      document.getElementById('valorDesconto').textContent = '- ' + brl(vlDesconto);
+      document.getElementById('valorTotal').textContent = brl(total);
+      toast('Cupom aplicado com sucesso!', 'ok');
+    } else {
+      toast('Cupom inválido ou expirado', 'erro');
+    }
+  };
+
+  window.pagamento_e_creditos_removerCupom = function() {
+    cupomAplicado = false;
+    desconto = 0;
+    document.getElementById('cupomAplicado').classList.add('hidden');
+    document.getElementById('cupomInput').value = '';
+    document.getElementById('linhaDesconto').classList.add('hidden');
+    document.getElementById('valorTotal').textContent = brl(valorBase * (1 + taxaPct));
+    toast('Cupom removido', 'info');
+  };
+
+  window.pagamento_e_creditos_atualizarBotao = function() {
+    var botao = document.getElementById('botaoPagar');
+    var termos = document.getElementById('aceitaTermos').checked;
+    if (metodoSelecionado && termos) {
+      botao.disabled = false;
+      botao.classList.remove('opacity-50', 'cursor-not-allowed');
+      botao.classList.add('hover:bg-marca-600', 'active:scale-95');
+    } else {
+      botao.disabled = true;
+      botao.classList.add('opacity-50', 'cursor-not-allowed');
+      botao.classList.remove('hover:bg-marca-600', 'active:scale-95');
+    }
+  };
+
+  window.pagamento_e_creditos_pagar = function() {
+    if (!metodoSelecionado) { toast('Selecione uma forma de pagamento', 'erro'); return; }
+    if (!document.getElementById('aceitaTermos').checked) { toast('Aceite os termos de uso', 'erro'); return; }
+    var botao = document.getElementById('botaoPagar');
+    botao.disabled = true;
+    botao.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>Processando...</span>';
+    setTimeout(function() {
+      toast('Pagamento aprovado! Pedido confirmado.', 'ok');
+      setTimeout(function() { mostrarTela('pedido-confirmado'); }, 800);
+    }, 2000);
+  };
+
+  window.pagamento_e_creditos_mascaraCartao = function(input) {
+    var v = input.value.replace(/\s/g, '').replace(/\D/g, '');
+    var parts = [];
+    for (var i = 0; i < v.length && i < 16; i += 4) { parts.push(v.substring(i, i + 4)); }
+    input.value = parts.join(' ');
+  };
+
+  window.pagamento_e_creditos_mascaraValidade = function(input) {
+    var v = input.value.replace(/\D/g, '');
+    if (v.length >= 2) { v = v.substring(0, 2) + '/' + v.substring(2, 4); }
+    input.value = v;
+  };
+
+  var transacoes = [
+    { id: 'TXN-7841', servico: 'Dedetização residencial', prestador: 'Joice Marina Santos', avatar: 'JM', cor: 'bg-rose-100 text-rose-700', valor: 195.00, data: '2026-01-10', status: 'concluida', metodo: 'Pix' },
+    { id: 'TXN-7832', servico: 'Instalação de ar-condicionado', prestador: 'Fernando Oliveira Lima', avatar: 'FL', cor: 'bg-sky-100 text-sky-700', valor: 450.00, data: '2026-01-05', status: 'concluida', metodo: 'Cartão' },
+    { id: 'TXN-7798', servico: 'Limpeza profunda — apartamento', prestador: 'Ana Paula Ferreira', avatar: 'AF', cor: 'bg-emerald-100 text-emerald-700', valor: 320.00, data: '2025-12-28', status: 'concluida', metodo: 'Pix' },
+    { id: 'TXN-7765', servico: 'Reparo hidráulico — torneira e registro', prestador: 'Marcos Vinícius Rocha', avatar: 'MR', cor: 'bg-violet-100 text-violet-700', valor: 150.00, data: '2025-12-22', status: 'concluida', metodo: 'Boleto' },
+    { id: 'TXN-7731', servico: 'Montagem de móveis — sala', prestador: 'Carlos Eduardo Nunes', avatar: 'CN', cor: 'bg-amber-100 text-amber-700', valor: 210.00, data: '2025-12-15', status: 'estornada', metodo: 'Cartão' },
+    { id: 'TXN-7698', servico: 'Pintura de parede — quarto', prestador: 'Patrícia Mendes Souza', avatar: 'PM', cor: 'bg-pink-100 text-pink-700', valor: 380.00, data: '2025-12-08', status: 'concluida', metodo: 'Pix' },
+    { id: 'TXN-7654', servico: 'Encanador — desentupimento', prestador: 'Joice Marina Santos', avatar: 'JM', cor: 'bg-rose-100 text-rose-700', valor: 175.00, data: '2025-11-30', status: 'concluida', metodo: 'Pix' },
+    { id: 'TXN-7621', servico: 'Designer de sobrancelhas', prestator: 'Larissa Andrade Costa', avatar: 'LC', cor: 'bg-fuchsia-100 text-fuchsia-700', valor: 85.00, data: '2025-11-22', status: 'concluida', metodo: 'Pix' }
+  ];
+
+  function renderizarTransacoes() {
+    var container = document.getElementById('listaTransacoes');
+    var html = '';
+    transacoes.forEach(function(t) {
+      var badgeClass = t.status === 'concluida' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
+      var badgeTexto = t.status === 'concluida' ? 'Concluída' : 'Estornada';
+      html += '<div onclick="abrirModal(\'' +
+        '<div class="space-y-3">' +
+          '<div class="flex items-center gap-3">' +
+            '<div class="w-10 h-10 rounded-full ' + t.cor + ' flex items-center justify-center"><span class="font-display font-bold text-sm">' + t.avatar + '</span></div>' +
+            '<div><p class="font-semibold text-sm">' + t.prestador + '</p><p class="text-xs text-gray-500">' + t.id + '</p></div>' +
+          '</div>' +
+          '<div class="bg-gray-50 rounded-lg p-3 space-y-1.5">' +
+            '<div class="flex justify-between text-sm"><span class="text-gray-600">Serviço</span><span class="font-medium">' + t.servico + '</span></div>' +
+            '<div class="flex justify-between text-sm"><span class="text-gray-600">Valor</span><span class="font-medium">' + brl(t.valor) + '</span></div>' +
+            '<div class="flex justify-between text-sm"><span class="text-gray-600">Data</span><span class="font-medium">' + dataBR(t.data) + '</span></div>' +
+            '<div class="flex justify-between text-sm"><span class="text-gray-600">Pagamento</span><span class="font-medium">' + t.metodo + '</span></div>' +
+            '<div class="flex justify-between text-sm"><span class="text-gray-600">Status</span><span class="' + (t.status === "concluida" ? "text-green-600" : "text-red-600") + ' font-medium">' + badgeTexto + '</span></div>' +
+          '</div>' +
+          (t.status === "concluida" ? '<button onclick="fecharModal(); toast(\'Recibo enviado por e-mail\', \'ok\')" class="w-full btn text-sm py-2">Baixar Recibo</button>' : '<button onclick="fecharModal()" class="w-full btn text-sm py-2">Fechar</button>') +
+        '</div>' +
+      '\', \'Transação ' + t.id + ' — ' + t.data + '\')" class="block card p-3 hover:shadow-md transition-all cursor-pointer active:scale-[0.98]">' +
+        '<div class="flex items-center gap-3">' +
+          '<div class="w-9 h-9 rounded-full ' + t.cor + ' flex items-center justify-center flex-shrink-0"><span class="font-display font-bold text-xs">' + t.avatar + '</span></div>' +
+          '<div class="flex-1 min-w-0">' +
+            '<p class="text-sm font-medium text-gray-900 truncate">' + t.servico + '</p>' +
+            '<p class="text-xs text-gray-500">' + dataBR(t.data) + ' · ' + t.metodo + '</p>' +
+          '</div>' +
+          '<div class="text-right flex-shrink-0">' +
+            '<p class="text-sm font-semibold text-gray-900">' + brl(t.valor) + '</p>' +
+            '<span class="badge ' + badgeClass + ' text-[10px] px-1.5 py-0.5">' + badgeTexto + '</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  document.getElementById('botaoPagar').addEventListener('mouseenter', function() {
+    if (!this.disabled) { this.classList.add('shadow-lg', 'shadow-marca-200'); }
+  });
+  document.getElementById('botaoPagar').addEventListener('mouseleave', function() {
+    this.classList.remove('shadow-lg', 'shadow-marca-200');
+  });
+
+  document.getElementById('aceitaTermos').addEventListener('change', function() {
+    var check = this.nextElementSibling;
+    var svg = check.querySelector('svg');
+    if (this.checked) {
+      check.classList.add('bg-marca-500', 'border-marca-500');
+      svg.classList.remove('opacity-0');
+      svg.classList.add('opacity-100');
+    } else {
+      check.classList.remove('bg-marca-500', 'border-marca-500');
+      svg.classList.add('opacity-0');
+      svg.classList.remove('opacity-100');
+    }
+  });
+
+  renderizarTransacoes();
+})();
+</script>
+
     <!-- TELAS -->
 
     </main>
