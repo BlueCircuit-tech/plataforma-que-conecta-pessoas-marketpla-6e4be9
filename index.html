@@ -899,6 +899,282 @@ window._catalogoInit=catalogo_de_servicos_init;
 })();
 </script>
 
+    <section data-tela="solicitar-servico" class="hidden">
+  <div class="animate-fadeIn pb-28">
+    <!-- Resumo do Prestador -->
+    <div class="px-5 mb-5">
+      <div onclick="mostrarTela('detalhe-do-prestador')" class="card cursor-pointer active:scale-[0.98] transition-transform">
+        <div class="flex items-center gap-4">
+          <div class="relative flex-shrink-0">
+            <div class="w-14 h-14 rounded-full bg-marca-100 flex items-center justify-center border-2 border-marca-200">
+              <span class="font-display font-bold text-marca-700 text-lg">RC</span>
+            </div>
+            <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center" title="Disponível">
+              <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display font-bold text-gray-900 truncate">Ricardo Carvalho</h3>
+            <p class="text-sm text-gray-500">Eletricista Residencial</p>
+            <div class="flex items-center gap-1 mt-0.5">
+              <svg class="w-3.5 h-3.5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <span class="text-sm font-semibold text-gray-700">4,9</span>
+              <span class="text-xs text-gray-400">· 127 avaliações</span>
+            </div>
+          </div>
+          <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divisor -->
+    <div class="px-5 mb-5">
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+    </div>
+
+    <!-- Formulário -->
+    <div class="px-5 space-y-5">
+      <!-- Cabeçalho do formulário -->
+      <div>
+        <h2 class="font-display font-bold text-gray-900 text-lg">Detalhes do Serviço</h2>
+        <p class="text-sm text-gray-500 mt-0.5">Preencha as informações para o profissional</p>
+      </div>
+
+      <!-- Categoria do Serviço -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Categoria do Serviço <span class="text-red-400">*</span></label>
+        <div class="relative">
+          <select id="sl-categoria" class="w-full appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 pr-10 text-gray-900 font-body text-sm focus:outline-none focus:border-marca-400 focus:ring-2 focus:ring-marca-100 transition-all">
+            <option value="">Selecione uma categoria</option>
+            <option selected>Instalação Elétrica</option>
+            <option>Reparo Hidráulico</option>
+            <option>Pintura Interna/Externa</option>
+            <option>Montagem de Móveis</option>
+            <option>Limpeza Residencial</option>
+            <option>Marcenaria</option>
+            <option>Alvenaria</option>
+            <option>Outro</option>
+          </select>
+          <svg class="w-5 h-5 text-gray-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+      </div>
+
+      <!-- Data e Horário -->
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1.5">Data Desejada <span class="text-red-400">*</span></label>
+          <input type="date" id="sl-data" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-marca-400 focus:ring-2 focus:ring-marca-100 transition-all" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1.5">Horário <span class="text-red-400">*</span></label>
+          <div class="relative">
+            <select id="sl-horario" class="w-full appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 pr-10 text-gray-900 text-sm focus:outline-none focus:border-marca-400 focus:ring-2 focus:ring-marca-100 transition-all">
+              <option value="">Selecione</option>
+              <option>08:00</option>
+              <option>09:00</option>
+              <option>10:00</option>
+              <option>11:00</option>
+              <option selected>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+              <option>16:00</option>
+              <option>17:00</option>
+            </select>
+            <svg class="w-5 h-5 text-gray-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Endereço do Serviço -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Endereço do Serviço <span class="text-red-400">*</span></label>
+        <div class="relative">
+          <input type="text" id="sl-endereco" value="Rua das Palmeiras, 247 - Jardim América, São Paulo - SP, CEP 01421-001" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pl-11 text-gray-900 text-sm focus:outline-none focus:border-marca-400 focus:ring-2 focus:ring-marca-100 focus:bg-white transition-all" />
+          <svg class="w-5 h-5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5" fill="currentColor"/></svg>
+        </div>
+        <p class="text-xs text-gray-400 mt-1.5 flex items-center gap-1">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Endereço principal do seu perfil.
+          <button onclick="solicitar_servico_editarEndereco()" class="text-marca-600 font-semibold hover:text-marca-700 underline underline-offset-2 transition-colors">Editar</button>
+        </p>
+      </div>
+
+      <!-- Descrição do Problema -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Descreva o Problema <span class="text-gray-400 font-normal">(opcional)</span></label>
+        <textarea id="sl-descricao" rows="4" placeholder="Ex: Preciso trocar 3 tomadas da sala e instalar um chuveiro elétrico no banheiro. A fiação já está preparada." class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-marca-400 focus:ring-2 focus:ring-marca-100 transition-all resize-none placeholder:text-gray-300"></textarea>
+        <p class="text-xs text-gray-400 mt-1 text-right"><span id="sl-caracteres">0</span>/500 caracteres</p>
+      </div>
+
+      <!-- Urgência -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">Nível de Urgência</label>
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" onclick="solicitar_servico_selectUrgencia(this, 'baixa')" data-nivel="baixa" class="urgencia-btn border-2 border-gray-200 bg-white rounded-xl py-2.5 px-2 text-sm font-medium text-gray-500 hover:border-blue-300 hover:text-blue-600 active:scale-95 transition-all flex flex-col items-center gap-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Rotineiro
+          </button>
+          <button type="button" onclick="solicitar_servico_selectUrgencia(this, 'media')" data-nivel="media" class="urgencia-btn border-2 border-marca-400 bg-marca-50 rounded-xl py-2.5 px-2 text-sm font-semibold text-marca-700 active:scale-95 transition-all flex flex-col items-center gap-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.774-.833-1.732-.833-2.5 0L4.268 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+            Urgente
+          </button>
+          <button type="button" onclick="solicitar_servico_selectUrgencia(this, 'alta')" data-nivel="alta" class="urgencia-btn border-2 border-gray-200 bg-white rounded-xl py-2.5 px-2 text-sm font-medium text-gray-500 hover:border-red-300 hover:text-red-600 active:scale-95 transition-all flex flex-col items-center gap-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Emergencial
+          </button>
+        </div>
+      </div>
+
+      <!-- Faixa de Valor -->
+      <div class="bg-gradient-to-br from-gray-50 to-gray-100/50 border border-gray-200/60 rounded-xl p-4">
+        <div class="flex items-center justify-between mb-2.5">
+          <span class="text-sm text-gray-600">Faixa de valor estimado</span>
+          <span class="text-sm font-bold text-gray-900">R$ 150 – R$ 350</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+          <div class="bg-gradient-to-r from-marca-400 to-marca-600 h-2.5 rounded-full transition-all duration-500" style="width: 48%"></div>
+        </div>
+        <div class="flex items-center justify-between mt-1.5">
+          <span class="text-xs text-gray-400">Baseado em 48 serviços similares</span>
+          <span class="text-xs text-gray-400">na sua região</span>
+        </div>
+      </div>
+
+      <!-- Garantia -->
+      <div class="flex items-start gap-3 bg-green-50 border border-green-100 rounded-xl p-4">
+        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-green-800">Garantia BlueCircuit</p>
+          <p class="text-xs text-green-600 mt-0.5">Se o serviço não for realizado, você recebe o valor de volta. O profissional é verificado.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rodapé Fixo com Ação -->
+    <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white/90 backdrop-blur-xl border-t border-gray-100 px-5 pt-3 pb-5 z-40">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="text-xs text-gray-500">Taxa da plataforma (8,3%)</span>
+        </div>
+        <span class="text-sm font-semibold text-gray-600">R$ 12,50</span>
+      </div>
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm font-medium text-gray-700">Valor do serviço</span>
+        <span class="font-display font-bold text-gray-900">R$ 275,00</span>
+      </div>
+      <div class="h-px bg-gray-200 mb-3"></div>
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm font-bold text-gray-800">Total a pagar</span>
+        <span class="font-display text-xl font-extrabold text-gray-900">R$ 287,50</span>
+      </div>
+      <button onclick="solicitar_servico_confirmar()" id="btn-confirmar" class="btn w-full bg-marca-600 hover:bg-marca-700 text-white font-display font-bold text-base py-4 rounded-2xl active:scale-[0.97] transition-all flex items-center justify-center gap-2.5 shadow-lg shadow-marca-600/25">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        Confirmar Pedido
+      </button>
+      <p class="text-xs text-gray-400 text-center mt-2.5">O pagamento será liberado após a conclusão do serviço</p>
+    </div>
+  </div>
+
+  <script>
+    function solicitar_servico_init() {
+      var hoje = new Date();
+      var amanha = new Date(hoje);
+      amanha.setDate(hoje.getDate() + 1);
+      var dataStr = amanha.toISOString().split('T')[0];
+      var dataInput = document.getElementById('sl-data');
+      if (dataInput) {
+        dataInput.value = dataStr;
+        dataInput.min = dataStr;
+      }
+
+      var desc = document.getElementById('sl-descricao');
+      if (desc) {
+        desc.addEventListener('input', function() {
+          var cont = document.getElementById('sl-caracteres');
+          if (cont) {
+            var len = this.value.length;
+            cont.textContent = len;
+            if (len > 500) {
+              this.value = this.value.slice(0, 500);
+              cont.textContent = '500';
+            }
+            if (len > 450) {
+              cont.classList.add('text-red-500', 'font-semibold');
+            } else {
+              cont.classList.remove('text-red-500', 'font-semibold');
+            }
+          }
+        });
+      }
+    }
+
+    function solicitar_servico_selectUrgencia(el, nivel) {
+      var botoes = document.querySelectorAll('.urgencia-btn');
+      botoes.forEach(function(b) {
+        b.className = 'urgencia-btn border-2 border-gray-200 bg-white rounded-xl py-2.5 px-2 text-sm font-medium text-gray-500 hover:border-blue-300 hover:text-blue-600 active:scale-95 transition-all flex flex-col items-center gap-1';
+      });
+      if (nivel === 'baixa') {
+        el.className = 'urgencia-btn border-2 border-blue-400 bg-blue-50 rounded-xl py-2.5 px-2 text-sm font-semibold text-blue-700 active:scale-95 transition-all flex flex-col items-center gap-1';
+      } else if (nivel === 'media') {
+        el.className = 'urgencia-btn border-2 border-marca-400 bg-marca-50 rounded-xl py-2.5 px-2 text-sm font-semibold text-marca-700 active:scale-95 transition-all flex flex-col items-center gap-1';
+      } else {
+        el.className = 'urgencia-btn border-2 border-red-400 bg-red-50 rounded-xl py-2.5 px-2 text-sm font-semibold text-red-700 active:scale-95 transition-all flex flex-col items-center gap-1';
+      }
+      var labels = { baixa: 'Rotineiro', media: 'Urgente', alta: 'Emergencial' };
+      toast('Urgência definida: ' + labels[nivel], 'info');
+    }
+
+    function solicitar_servico_editarEndereco() {
+      var input = document.getElementById('sl-endereco');
+      if (input) {
+        input.removeAttribute('readonly');
+        input.classList.remove('bg-gray-50');
+        input.classList.add('bg-white');
+        input.focus();
+        input.select();
+        toast('Endereço liberado para edição', 'info');
+      }
+    }
+
+    function solicitar_servico_confirmar() {
+      var categoria = document.getElementById('sl-categoria').value;
+      var data = document.getElementById('sl-data').value;
+      var horario = document.getElementById('sl-horario').value;
+      var endereco = document.getElementById('sl-endereco').value.trim();
+      var descricao = document.getElementById('sl-descricao').value.trim();
+
+      if (!categoria) { toast('Selecione a categoria do serviço', 'erro'); return; }
+      if (!data) { toast('Selecione a data desejada', 'erro'); return; }
+      if (!horario) { toast('Selecione o horário', 'erro'); return; }
+      if (!endereco) { toast('Informe o endereço do serviço', 'erro'); return; }
+
+      var btn = document.getElementById('btn-confirmar');
+      btn.disabled = true;
+      btn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg> Enviando pedido...';
+      btn.classList.add('opacity-70');
+
+      setTimeout(function() {
+        toast('Pedido enviado! O profissional recebeu sua solicitação.', 'ok');
+        setTimeout(function() {
+          mostrarTela('pedido-confirmado');
+          btn.disabled = false;
+          btn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> Confirmar Pedido';
+          btn.classList.remove('opacity-70');
+        }, 2000);
+      }, 1800);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', solicitar_servico_init);
+    } else {
+      solicitar_servico_init();
+    }
+  </script>
+</section>
+
     <!-- TELAS -->
 
     </main>
