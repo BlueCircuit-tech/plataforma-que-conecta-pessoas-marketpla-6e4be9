@@ -2589,6 +2589,260 @@ function painel_do_prestador_fecharModal() {
 }
 </script>
 
+    <section data-tela="minha-conta-prestador" class="hidden">
+  <div class="minha-conta-content space-y-4">
+    <!-- Cabeçalho da tela -->
+    <div>
+      <h1 class="text-xl font-display font-bold text-cinza-900">Minha Conta</h1>
+      <p class="text-sm text-cinza-500 mt-0.5">Gerencie seu perfil, serviços e documentos</p>
+    </div>
+
+    <!-- Perfil -->
+    <div class="card p-4 flex items-center gap-4">
+      <div class="relative flex-shrink-0">
+        <div id="fotoPerfil" class="w-16 h-16 rounded-full bg-marca-100 flex items-center justify-center text-2xl font-display font-bold text-marca-700 cursor-pointer hover:bg-marca-200 transition-colors" onclick="minha_conta_prestador_editarFoto()">RC</div>
+        <button onclick="minha_conta_prestador_editarFoto()" class="absolute -bottom-0.5 -right-0.5 w-6 h-6 bg-marca-600 rounded-full flex items-center justify-center text-white active:scale-90 transition-transform">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </button>
+      </div>
+      <div class="flex-1 min-w-0">
+        <h2 class="font-display font-semibold text-cinza-900 text-base truncate">Ricardo Costa</h2>
+        <p class="text-xs text-cinza-500">Eletricista Residencial · SP</p>
+        <div class="flex items-center gap-1 mt-1">
+          <span class="badge bg-verde-100 text-verde-700 text-[10px]">Verificado</span>
+          <span class="badge bg-marca-50 text-marca-700 text-[10px]">147 avaliações</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dados pessoais -->
+    <div class="card p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-display font-semibold text-cinza-900 text-sm">Dados Pessoais</h3>
+        <button onclick="minha_conta_prestador_toggleEdicao('dados')" id="btnDados" class="text-marca-600 text-xs font-medium flex items-center gap-1 active:scale-95 transition-transform">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+          Editar
+        </button>
+      </div>
+      <div id="dadosView" class="space-y-2.5">
+        <div><label class="text-[11px] text-cinza-400 font-medium">Nome completo</label><p class="text-sm text-cinza-800 font-medium">Ricardo Costa Silva</p></div>
+        <div><label class="text-[11px] text-cinza-400 font-medium">CPF</label><p class="text-sm text-cinza-800">123.456.789-00</p></div>
+        <div><label class="text-[11px] text-cinza-400 font-medium">Telefone</label><p class="text-sm text-cinza-800">(11) 98765-4321</p></div>
+        <div><label class="text-[11px] text-cinza-400 font-medium">E-mail</label><p class="text-sm text-cinza-800">ricardo.costa@email.com</p></div>
+      </div>
+      <div id="dadosForm" class="hidden space-y-2.5">
+        <input type="text" value="Ricardo Costa Silva" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-marca-500">
+        <input type="text" value="123.456.789-00" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-marca-500">
+        <input type="text" value="(11) 98765-4321" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-marca-500">
+        <input type="email" value="ricardo.costa@email.com" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-marca-500">
+        <button onclick="minha_conta_prestador_salvarDados()" class="btn w-full text-sm">Salvar alterações</button>
+      </div>
+    </div>
+
+    <!-- Serviços que ofereço -->
+    <div class="card p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-display font-semibold text-cinza-900 text-sm">Serviços que ofereço</h3>
+        <button onclick="minha_conta_prestador_toggleEdicao('servicos')" id="btnServicos" class="text-marca-600 text-xs font-medium flex items-center gap-1 active:scale-95 transition-transform">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+          Editar
+        </button>
+      </div>
+      <div id="servicosView" class="flex flex-wrap gap-2">
+        <span class="badge bg-marca-50 text-marca-700">Instalação elétrica</span>
+        <span class="badge bg-marca-50 text-marca-700">Manutenção residencial</span>
+        <span class="badge bg-marca-50 text-marca-700">Troca de disjuntores</span>
+        <span class="badge bg-marca-50 text-marca-700">Fiação e cabeamento</span>
+        <span class="badge bg-marca-50 text-marca-700">Iluminação</span>
+      </div>
+      <div id="servicosForm" class="hidden space-y-2">
+        <div class="flex flex-wrap gap-2" id="servicosTags">
+          <span class="badge bg-marca-50 text-marca-700 flex items-center gap-1">Instalação elétrica<button onclick="minha_conta_prestador_removerTag(this)" class="text-marca-400 hover:text-marca-700">&times;</button></span>
+          <span class="badge bg-marca-50 text-marca-700 flex items-center gap-1">Manutenção residencial<button onclick="minha_conta_prestador_removerTag(this)" class="text-marca-400 hover:text-marca-700">&times;</button></span>
+          <span class="badge bg-marca-50 text-marca-700 flex items-center gap-1">Troca de disjuntores<button onclick="minha_conta_prestador_removerTag(this)" class="text-marca-400 hover:text-marca-700">&times;</button></span>
+        </div>
+        <div class="flex gap-2">
+          <input type="text" id="novoServico" placeholder="Adicionar serviço..." class="flex-1 text-sm border border-cinza-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-marca-500">
+          <button onclick="minha_conta_prestador_adicionarServico()" class="btn text-sm px-3">+</button>
+        </div>
+        <button onclick="minha_conta_prestador_salvarServicos()" class="btn w-full text-sm">Salvar</button>
+      </div>
+    </div>
+
+    <!-- Região de atendimento -->
+    <div class="card p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-display font-semibold text-cinza-900 text-sm">Região de atendimento</h3>
+        <button onclick="minha_conta_prestador_toggleEdicao('regiao')" id="btnRegiao" class="text-marca-600 text-xs font-medium flex items-center gap-1 active:scale-95 transition-transform">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+          Editar
+        </button>
+      </div>
+      <div id="regiaoView" class="space-y-2">
+        <div class="flex items-start gap-2"><svg class="w-4 h-4 text-marca-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><div><p class="text-sm text-cinza-800">São Paulo - SP</p><p class="text-xs text-cinza-400">Zonas: Sul, Leste, Centro</p></div></div>
+        <div class="flex items-start gap-2"><svg class="w-4 h-4 text-marca-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><div><p class="text-sm text-cinza-800">São Bernardo do Campo - SP</p><p class="text-xs text-cinza-400">Região central</p></div></div>
+        <p class="text-xs text-cinza-400 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Deslocamento de até 25km</p>
+      </div>
+      <div id="regiaoForm" class="hidden space-y-2.5">
+        <input type="text" value="São Paulo - SP" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-marca-500">
+        <input type="text" value="São Bernardo do Campo - SP" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-marca-500">
+        <input type="text" value="25" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-marca-500">
+        <button onclick="minha_conta_prestador_salvarRegiao()" class="btn w-full text-sm">Salvar</button>
+      </div>
+    </div>
+
+    <!-- Valores -->
+    <div class="card p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-display font-semibold text-cinza-900 text-sm">Valores dos serviços</h3>
+        <button onclick="minha_conta_prestador_toggleEdicao('valores')" id="btnValores" class="text-marca-600 text-xs font-medium flex items-center gap-1 active:scale-95 transition-transform">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+          Editar
+        </button>
+      </div>
+      <div id="valoresView" class="space-y-2.5">
+        <div class="flex justify-between items-center py-2 border-b border-cinza-100 last:border-0"><span class="text-sm text-cinza-700">Visita técnica</span><span class="text-sm font-semibold text-cinza-900">R$ 80,00</span></div>
+        <div class="flex justify-between items-center py-2 border-b border-cinza-100 last:border-0"><span class="text-sm text-cinza-700">Instalação ponto de luz</span><span class="text-sm font-semibold text-cinza-900">A partir de R$ 120,00</span></div>
+        <div class="flex justify-between items-center py-2 border-b border-cinza-100 last:border-0"><span class="text-sm text-cinza-700">Troca de disjuntor</span><span class="text-sm font-semibold text-cinza-900">A partir de R$ 150,00</span></div>
+        <div class="flex justify-between items-center py-2"><span class="text-sm text-cinza-700">Hora adicional</span><span class="text-sm font-semibold text-cinza-900">R$ 60,00</span></div>
+      </div>
+      <div id="valoresForm" class="hidden space-y-2.5">
+        <div><label class="text-[11px] text-cinza-400 font-medium">Visita técnica (R$)</label><input type="text" value="80" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-marca-500"></div>
+        <div><label class="text-[11px] text-cinza-400 font-medium">Instalação ponto de luz (R$)</label><input type="text" value="120" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-marca-500"></div>
+        <div><label class="text-[11px] text-cinza-400 font-medium">Troca de disjuntor (R$)</label><input type="text" value="150" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-marca-500"></div>
+        <div><label class="text-[11px] text-cinza-400 font-medium">Hora adicional (R$)</label><input type="text" value="60" class="w-full text-sm border border-cinza-200 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-marca-500"></div>
+        <button onclick="minha_conta_prestador_salvarValores()" class="btn w-full text-sm">Salvar valores</button>
+      </div>
+    </div>
+
+    <!-- Documentos e Portfólio -->
+    <div class="card p-4">
+      <h3 class="font-display font-semibold text-cinza-900 text-sm mb-3">Documentos e Verificação</h3>
+      <div class="space-y-3">
+        <div class="flex items-center justify-between py-2.5 border-b border-cinza-100 last:border-0">
+          <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-verde-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="text-sm text-cinza-800 font-medium">RG</p><p class="text-[11px] text-cinza-400">rg_ricardo_costa.jpg</p></div></div>
+          <span class="badge bg-verde-100 text-verde-700">Aprovado</span>
+        </div>
+        <div class="flex items-center justify-between py-2.5 border-b border-cinza-100 last:border-0">
+          <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-verde-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="text-sm text-cinza-800 font-medium">CPF</p><p class="text-[11px] text-cinza-400">cpf_ricardo_costa.pdf</p></div></div>
+          <span class="badge bg-verde-100 text-verde-700">Aprovado</span>
+        </div>
+        <div class="flex items-center justify-between py-2.5 border-b border-cinza-100 last:border-0">
+          <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-amarelo-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-amarelo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="text-sm text-cinza-800 font-medium">Comprovante de Residência</p><p class="text-[11px] text-cinza-400">Aguardando envio</p></div></div>
+          <span class="badge bg-amarelo-100 text-amarelo-700">Pendente</span>
+        </div>
+        <button onclick="minha_conta_prestador_uploadDocumento()" class="w-full mt-2 py-2.5 border-2 border-dashed border-cinza-200 rounded-xl text-sm text-cinza-500 hover:border-marca-400 hover:text-marca-600 transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Enviar documento
+        </button>
+      </div>
+    </div>
+
+    <!-- Portfólio -->
+    <div class="card p-4">
+      <h3 class="font-display font-semibold text-cinza-900 text-sm mb-3">Portfólio de trabalhos</h3>
+      <div class="grid grid-cols-3 gap-2" id="portfolioGrid">
+        <div class="aspect-square rounded-xl bg-gradient-to-br from-marca-100 to-azul-100 flex items-center justify-center relative group cursor-pointer active:scale-95 transition-transform" onclick="minha_conta_prestador_verFoto(this)">
+          <svg class="w-8 h-8 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-xl transition-colors flex items-center justify-center"><svg class="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+        </div>
+        <div class="aspect-square rounded-xl bg-gradient-to-br from-verde-100 to-marca-100 flex items-center justify-center relative group cursor-pointer active:scale-95 transition-transform" onclick="minha_conta_prestador_verFoto(this)">
+          <svg class="w-8 h-8 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-xl transition-colors flex items-center justify-center"><svg class="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+        </div>
+        <div class="aspect-square rounded-xl bg-gradient-to-br from-amarelo-100 to-verde-100 flex items-center justify-center relative group cursor-pointer active:scale-95 transition-transform" onclick="minha_conta_prestador_verFoto(this)">
+          <svg class="w-8 h-8 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-xl transition-colors flex items-center justify-center"><svg class="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+        </div>
+      </div>
+      <button onclick="minha_conta_prestador_adicionarPortfolio()" class="w-full mt-3 py-2.5 border-2 border-dashed border-cinza-200 rounded-xl text-sm text-cinza-500 hover:border-marca-400 hover:text-marca-600 transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Adicionar foto de trabalho
+      </button>
+    </div>
+
+    <!-- Tornar-se Premium -->
+    <div class="bg-gradient-to-br from-laranja-500 to-laranja-600 rounded-2xl p-5 text-white relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4"></div>
+      <div class="relative">
+        <div class="flex items-center gap-1.5 mb-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M5 16l3.879-3.879m0 0l2.121 2.121L17 7.414l-5.657 5.657-2.121-2.121L5 16z"/><path d="M21 6l-5.657 5.657m0 0l-2.121-2.121L7 18.414l5.657-5.657 2.121 2.121L21 6z"/></svg>
+          <span class="font-display font-bold text-base">Torne-se Premium</span>
+        </div>
+        <p class="text-sm text-white/90 mb-1">Apareça no topo dos resultados e receba mais solicitações.</p>
+        <p class="text-xs text-white/70 mb-4">A partir de R$ 29,90/mês · Cancele quando quiser</p>
+        <button onclick="minha_conta_prestador_assinarPremium()" class="w-full bg-white text-laranja-600 font-semibold text-sm py-3 rounded-xl active:scale-[0.97] transition-transform shadow-lg">Assinar plano Premium</button>
+      </div>
+    </div>
+
+    <!-- Navegação -->
+    <div class="flex gap-2 pt-1 pb-2">
+      <button onclick="mostrarTela('painel-do-prestador')" class="flex-1 py-2.5 rounded-xl border border-cinza-200 text-xs font-medium text-cinza-600 flex items-center justify-center gap-1.5 active:scale-[0.97] transition-transform">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg>
+        Painel
+      </button>
+      <button onclick="mostrarTela('catalogo-de-servicos')" class="flex-1 py-2.5 rounded-xl border border-cinza-200 text-xs font-medium text-cinza-600 flex items-center justify-center gap-1.5 active:scale-[0.97] transition-transform">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+        Catálogo
+      </button>
+      <button onclick="mostrarTela('painel-administrativo')" class="flex-1 py-2.5 rounded-xl border border-cinza-200 text-xs font-medium text-cinza-600 flex items-center justify-center gap-1.5 active:scale-[0.97] transition-transform">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Admin
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    function toggleEdicao(secao) {
+      var view = document.getElementById(secao+'View');
+      var form = document.getElementById(secao+'Form');
+      if (!view || !form) return;
+      var isHidden = form.classList.contains('hidden');
+      var btn = document.getElementById('btn'+secao.charAt(0).toUpperCase()+secao.slice(1));
+      if (isHidden) { view.classList.add('hidden'); form.classList.remove('hidden'); if(btn) btn.innerHTML='<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> Cancelar'; }
+      else { form.classList.add('hidden'); view.classList.remove('hidden'); if(btn) btn.innerHTML='<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg> Editar'; }
+    }
+    function salvarDados() { toggleEdicao('dados'); toast('Dados atualizados com sucesso', 'ok'); }
+    function salvarServicos() { toggleEdicao('servicos'); toast('Serviços atualizados', 'ok'); }
+    function salvarRegiao() { toggleEdicao('regiao'); toast('Região de atendimento atualizada', 'ok'); }
+    function salvarValores() { toggleEdicao('valores'); toast('Valores atualizados', 'ok'); }
+    function adicionarServico() {
+      var inp = document.getElementById('novoServico');
+      if (!inp || !inp.value.trim()) return;
+      var container = document.getElementById('servicoTags') || inp.parentElement.previousElementSibling;
+      var tag = document.createElement('span');
+      tag.className = 'badge bg-marca-50 text-marca-700 flex items-center gap-1';
+      tag.innerHTML = inp.value.trim()+'<button onclick="minha_conta_prestador_removerTag(this)" class="text-marca-400 hover:text-marca-700">&times;</button>';
+      var tagsWrap = document.getElementById('servicosTags');
+      if (tagsWrap) tagsWrap.appendChild(tag);
+      inp.value = '';
+    }
+    function removerTag(btn) { btn.parentElement.remove(); }
+    function editarFoto() { toast('Funcionalidade de edição de foto em breve', 'info'); }
+    function uploadDocumento() { toast('Selecione o arquivo para enviar', 'info'); }
+    function verFoto(el) { abrirModal('<div class="aspect-video rounded-xl bg-gradient-to-br from-marca-100 to-azul-100 flex items-center justify-center"><svg class="w-16 h-16 text-marca-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div><p class="text-sm text-cinza-500 mt-3 text-center">Visualização da imagem do portfólio</p>', 'Foto do portfólio'); }
+    function adicionarPortfolio() { toast('Nova foto adicionada ao portfólio', 'ok'); }
+    function assinarPremium() { abrirModal('<p class="text-sm text-cinza-600 mb-4">Plano Premium: R$ 29,90/mês. Apareça no topo dos resultados e receba mais solicitações.</p><div class="flex gap-2"><button onclick="fecharModal(); minha_conta_prestador_confirmarPremium();" class="btn flex-1 text-sm">Confirmar assinatura</button><button onclick="fecharModal()" class="btn flex-1 text-sm" style="background:#f3f4f6;color:#4b5563;">Cancelar</button></div>', 'Assinar Premium'); }
+    function confirmarPremium() { toast('Bem-vindo ao Premium! Você agora aparece no topo dos resultados.', 'ok'); }
+
+    window.minha_conta_prestador_toggleEdicao = toggleEdicao;
+    window.minha_conta_prestador_salvarDados = salvarDados;
+    window.minha_conta_prestador_salvarServicos = salvarServicos;
+    window.minha_conta_prestador_salvarRegiao = salvarRegiao;
+    window.minha_conta_prestador_salvarValores = salvarValores;
+    window.minha_conta_prestador_adicionarServico = adicionarServico;
+    window.minha_conta_prestador_removerTag = removerTag;
+    window.minha_conta_prestador_editarFoto = editarFoto;
+    window.minha_conta_prestador_uploadDocumento = uploadDocumento;
+    window.minha_conta_prestador_verFoto = verFoto;
+    window.minha_conta_prestador_adicionarPortfolio = adicionarPortfolio;
+    window.minha_conta_prestador_assinarPremium = assinarPremium;
+    window.minha_conta_prestador_confirmarPremium = confirmarPremium;
+  })();
+</script>
+
     <!-- TELAS -->
 
     </main>
